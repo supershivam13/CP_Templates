@@ -269,6 +269,7 @@ int vis[1000001], in[1000001], low[1000001];
 vi v[1000001];
 int timer;
 bool hasbridge;
+vii bridgelist;
 // int curr_com;
 
 // // Depth First Search for Graphs
@@ -284,14 +285,20 @@ void dfs(int node, int par) {
 
         else if (vis[child] == 1) {
 
+            // case of back edge
+
             low[node] = min(low[node], in[child]);
         }
         else {
+
+            // case of forward edge
+
             dfs(child, node);
 
             if (low[child] > in[node]) {
                 hasbridge = true;
-                return;
+                bridgelist.pb({node, child});
+
             }
 
             low[node] = min(low[node], low[child]);
@@ -369,7 +376,10 @@ int32_t main()
         v[b].pb(a);
     }
 
-    dfs(1, -1);
+    for (int i = 1; i <= n; i++) {
+        if (vis[i] == 0)
+            dfs(i, -1);
+    }
 
     if (hasbridge) {
         cout << "YES";
@@ -380,4 +390,3 @@ int32_t main()
     }
 
 }
-
