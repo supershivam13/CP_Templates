@@ -285,13 +285,13 @@ void dfs(int node, int par) {
 
         else if (vis[child] == 1) {
 
-            // case of back edge
+            // in case of back edge, we use intime value of child to minimise
 
             low[node] = min(low[node], in[child]);
         }
         else {
 
-            // case of forward edge
+            // in case of forward edge, first we make a dfs call to child and then uses its low value to minimise
 
             dfs(child, node);
 
