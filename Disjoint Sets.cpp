@@ -7,7 +7,7 @@
 int parent[100001];
 
 // to store the size of set of each set ID(parent)
-int size[100001];
+int siz[100001];
 
 
 // to find the set ID(parent) of v
@@ -22,7 +22,7 @@ int findSet(int v)
 void makeSet(int v)
 {
     parent[v] = v;
-    size[v] = 1;
+    siz[v] = 1;
 }
 
 // to merge two sets of elements a and b
@@ -37,15 +37,15 @@ void unionSets(int a, int b)
 
     if (a != b)
     {
-        if (size[a] < size[b]) {
+        if (siz[a] < siz[b]) {
             parent[a] = b;
-            size[b] += size[a];
+            siz[b] += siz[a];
         }
 
 
         else {
             parent[b] = a;
-            size[a] += size[b];
+            siz[a] += siz[b];
         }
     }
 }
