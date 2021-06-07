@@ -101,157 +101,6 @@ const int lim   = 100005;
 //  to_string() function - converts integer to string ( Example- string s = to_string(x) )
 
 
-// Returns 2 powered n number less than or equal to a
-int two_power_n_less_equal(int a) {
-    int ans = 1;
-    while (1)
-    {
-        if (ans * 2 > a)
-            break;
-        ans *= 2;
-    }
-    return ans;
-}
-
-// Returns 2 powered n number less than or equal to a
-int two_power_n_less_equal_log_method(int a) {
-    int l = log(a) / log(2);
-    int ans = pow(2, l);
-    return ans;
-}
-
-// log_a_to_base_b
-double logab (int a, int b)
-{
-    return log(a) / log(b);
-}
-
-// Fast Exponentiation - O(log y)
-int fpow( int x, int y) {
-    int temp;
-    if (y == 0)
-        return 1;
-    temp = fpow(x, y / 2);
-    if (y % 2 == 0)
-        return (temp * temp) % mod;
-    else
-        return (x * ( (temp * temp) % mod ) ) % mod;
-}
-
-// HCF of two numbers a and b - O(log max(a, b))
-int gcd(int a, int b) {
-    if (b == 0)return a;
-    return gcd(b, a % b);
-}
-
-// Returns bool whether n is prime or not - O(sqrt(n))
-bool isPrime(int n) {
-    if (n <= 1)
-        return false;
-    if (n <= 3)
-        return true;
-    if (n % 2 == 0 || n % 3 == 0)
-        return false;
-    for (int i = 5; i * i <= n; i = i + 6)
-        if (n % i == 0 || n % (i + 2) == 0)
-            return false;
-    return true;
-}
-
-
-int modInv(int n, int mod) {
-    return fpow(n, mod - 2);
-}
-
-// Returns a map with (prime factor, power raised) as key value pairs - O( logn * sqrt(n) )
-// Example for 60, it returns a map with { (2,2) , (3,1) , (5,1) }
-map<int, int> primeFactors(int n)
-{
-    map<int, int> mp;
-    while (n % 2 == 0)
-    {
-        if (mp.count(2) == 1)
-            mp[2]++;
-        else
-            mp.insert({2, 1});
-        n = n / 2;
-    }
-    for (int i = 3; i <= sqrt(n); i = i + 2)
-    {
-        while (n % i == 0)
-        {
-            if (mp.count(i) == 1)
-                mp[i]++;
-            else
-                mp.insert({i, 1});
-            n = n / i;
-        }
-    }
-    if (n > 2)
-    {
-        if (mp.count(n) == 1)
-            mp[n]++;
-        else
-            mp.insert({n, 1});
-    }
-    return mp;
-}
-
-
-// Return a binary string of integer a of length 31
-string DecimalToBinaryString(int a)
-{
-    string binary = "";
-    int mask = 1;
-    for (int i = 0; i < 31; i++)
-    {
-        if ((mask & a) >= 1)
-            binary = "1" + binary;
-        else
-            binary = "0" + binary;
-        mask <<= 1;
-    }
-    // cout<<binary<<endl;
-    return binary;
-}
-
-// Returns decimal value of a binary integer
-int binaryIntegerToDecimal(int n)
-{
-    int num = n;
-    int dec_value = 0;
-    int base = 1;
-
-    int temp = num;
-    while (temp) {
-        int last_digit = temp % 10;
-        temp = temp / 10;
-        dec_value += last_digit * base;
-        base = base * 2;
-    }
-
-    return dec_value;
-}
-
-// Function to find factorial of a number n -  O(n)
-int factorial( int n)
-{
-    if (n == 0 or n == 1)
-        return 1;
-    return n * factorial(n - 1);
-}
-
-// Initialized globally the factorial array for nCr function
-// const int N1 = 1000001;
-// int fac[N1];
-
-// Return the nCr value with  factorial array- O( n )
-// int nCr(int n, int r, int mod){
-
-//     if(r == 0)
-//         return 1;
-//     return (fac[n] * modInverse(fac[r], mod) % mod * modInverse(fac[n - r], mod) % mod) % mod;
-// }
 
 
 void c_p_c()
@@ -262,6 +111,15 @@ void c_p_c()
     freopen("output.txt", "w", stdout);
 #endif
 }
+
+// BELLMAN-FORD ALGORITHM
+
+// Dijkstra doesn’t work for Graphs with negative weight edges and also with negative weighted cycles,
+// Bellman-Ford works for such graphs.
+
+//Time complexity of Bellman-Ford is O(VE),
+// which is more than Dijkstra's algorithm which is O(VlogV)(using minheap).
+
 
 // to store edges and weigths as pair
 vector < pair < pair<int, int>, int> > v;
@@ -322,9 +180,5 @@ int32_t main()
         else
             cout << dist[i] << endl;
     }
-
-
-
-
 
 }
