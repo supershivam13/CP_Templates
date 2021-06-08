@@ -60,14 +60,27 @@
 #define endzeroes(x)    __builtin_ctzll(x) // used to count the trailing zeros of the given integer(ctz = count trailing zeros)
 
 const int mod   = 1000000007;
+const int inf   = 100000000000000000;
+#define all(v)          v.begin(),v.end()
 
 using namespace std;
+
+
+// DIJKSTRA'S Algorithm ( WORKS FOR BOTH DIRECTED AND UNDIRECTED GRAPHS )
+
+// 1) Works only with Positive weight edges ( i.e it fails in case of negative edges
+//    and negative weighted cycles )
+
+// 2) Time Complexity - O( VlogE )
 
 // to store the adjacency list as pairs { weight,node }
 vector<pair<int, int>> v[100001];
 
 // to store the distance of the nodes
 int dist[100001];
+
+// to store the parents of each node
+int parent[100001];
 
 
 
@@ -79,13 +92,15 @@ int32_t main()
 
     // initialising the dist array with very large numbers
     fo(i, 1, n) {
-        dist[i] = mod;
+        dist[i] = inf;
     }
 
 
     while (m--) {
         cin >> a >> b >> w;
         // storing as { weight , node (to which its get connected)}
+
+        // Assuming undirected graph
         v[a].pb({w, b});
         v[b].pb({w, a});
     }
@@ -119,14 +134,42 @@ int32_t main()
             if (curr_w + child.first < dist[child.second]) {
                 dist[child.second] = curr_w + child.first;
                 pq.push({dist[child.second], child.second});
+
+                // storing the parent of each node for path printing
+                parent[child.second] = curr_node;
             }
         }
 
 
     }
 
+    // Printing the distance of each node from source ( dist array )
     fo(i, 1, n) {
         cout << dist[i] << " ";
+    }
+
+    cout << endl;
+
+    // Path printing for the destination node ( Assuming dest to be n and source is 1 )
+    int dest = n;
+    int src = 1;
+
+    // if the destination is unreachable from source node
+    if (dist[n] == inf)
+        cout << "-1" << endl;
+
+    else {
+        // vector to store the path
+        vi path;
+
+        while (dest != src) {
+            path.pb(dest);
+            dest = parent[dest];
+        }
+        path.pb(src);
+        reverse(all(path));
+
+        arrout(path, path.size());
     }
 
 
