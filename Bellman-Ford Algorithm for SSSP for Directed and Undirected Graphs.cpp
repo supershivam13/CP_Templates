@@ -114,11 +114,23 @@ void c_p_c()
 
 // BELLMAN-FORD ALGORITHM
 
-// Dijkstra doesn’t work for Graphs with negative weight edges and also with negative weighted cycles,
-// Bellman-Ford works for such graphs.
-
-//Time complexity of Bellman-Ford is O(VE),
+// Dijkstra doesn’t work for Graphs with negative weight edges and also with negative weighted cycles.
+// Time complexity of Bellman-Ford is O(VE),
 // which is more than Dijkstra's algorithm which is O(VlogV)(using minheap).
+
+
+// 1) DIRECTED GRAPHS
+// Bellman-Ford works with negatives edges in case of directed graphs, but fails with case of
+// negative weighted cycles.
+
+// Bellman-Ford with directed graphs can be used to detect the presence of negative weighted cycles.
+
+
+// 2) UNDIRECTED GRAPHS ( becomes same as Dijkstra's )
+// In case of Undirected Graph, it works only with positive edges ( i.e it fails when negative edge
+// is present or negative weighted cycle is present ).
+
+
 
 
 // to store edges and weigths as pair
@@ -157,6 +169,7 @@ int32_t main()
     // n-1 phases of Bellman Ford Algorithm
     for (int i = 0; i < n - 1; i++) {
 
+
         // iterating over the edge list
         for (int j = 0; j < v.size(); j++) {
 
@@ -165,7 +178,11 @@ int32_t main()
                 dist[v[j].first.second] = min(dist[v[j].first.second], dist[v[j].first.first] + v[j].second);
 
             // This is for DIRECTED GRAPHS only.
-            // To make it for undirected graph, just uncomment the below if statement.
+            // While using for undirected graphs , make sure that only positive weight edges
+            // are present ( as it fails on undirected graphs with negative edges )
+
+            // To make it for undirected graph, just a) uncomment the below if statement
+            //                                       b) comment the below negative cycle test statements
 
             // if (dist[v[j].first.second] < INT_MAX)
             //     dist[v[j].first.first] = min(dist[v[j].first.first], dist[v[j].first.second] + v[j].second);
@@ -173,12 +190,29 @@ int32_t main()
         }
     }
 
-    // Printing the distance of each node from source node
-    fo(i, 1, n) {
-        if (dist[i] == INT_MAX)
-            cout << "INF" << endl;
-        else
-            cout << dist[i] << endl;
+    bool is_neg_cycle = false;
+
+    // n-th phase to check the presence of negative weighted cycle in directed graphs.
+    // ( because upto n-1 phases all shortest distances must be achieved, if we still get some edge whose
+    //  distance can be minimised, then for sure it contains a negative weighted cycle )
+    for (int j = 0; j < v.size(); j++) {
+        if (dist[v[j].first.first] != INT_MAX and dist[v[j].first.second] > dist[v[j].first.first] + v[j].second)
+            is_neg_cycle = true;
+    }
+
+    if (is_neg_cycle == true) {
+        cout << "Negative Cycle Found";
+    }
+    else {
+
+        // Printing the distance of each node from source node
+        fo(i, 1, n) {
+            if (dist[i] == INT_MAX)
+                cout << "INF" << endl;
+            else
+                cout << dist[i] << endl;
+        }
+
     }
 
 }
