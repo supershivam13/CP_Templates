@@ -137,6 +137,10 @@ int32_t main()
             dist[i][j]=graph[i][j];
     
     
+    // Floyd Warshall Algo checks for all the path between node i to node j via the intermediate node k
+    // Example- There are 4 nodes and for going to node 4 from node 1, it will check all the possible paths
+    // (i.e 1 -> 4 , 1 -> 2 -> 4 , 1 -> 3 -> 4)
+    
     // k is the intermediate node 
     fo(k, 1, n)
         fo(i, 1, n)
