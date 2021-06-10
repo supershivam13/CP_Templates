@@ -194,7 +194,8 @@ int32_t main()
         int qs, qe;
         cin >> qs >> qe;
 
-        // Here, we are passing + 1 as ques
+        // Here, we are passing + 1 as question is using 0-based indexing
+        // and we have used 1-based indexing for making the segment tree
         cout << query(1, 1, n, qs + 1, qe + 1) << endl;
 
     }
