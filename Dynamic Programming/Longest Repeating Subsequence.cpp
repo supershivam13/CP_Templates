@@ -9,7 +9,7 @@ int dp[1001][1001];
 
 class Solution {
 public:
-    int longestCommonSubsequence(string x) {
+    int longestRepeatingSubsequence(string x) {
 
         string y = x;
 
