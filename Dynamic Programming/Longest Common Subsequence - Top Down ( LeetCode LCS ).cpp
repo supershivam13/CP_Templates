@@ -1,3 +1,8 @@
+// NOTE: In Top Down Approach ( Recursive approach ), if there is need of passing strings as parameter,
+// then pass strings by address ( to avoid time and memory in copying the string in a new function call )
+
+// ( In some cases, not doing this may result in TLE, just like in this question LCS on Leetcode )
+
 // DP Array
 int dp[1001][1001];
 
