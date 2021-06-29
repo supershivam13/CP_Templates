@@ -1,5 +1,5 @@
-// NOTE: In Top Down Approach ( Recursive approach ), if there is need of passing strings as parameter,
-// then pass strings by address ( to avoid time and memory in copying the string in a new function call )
+// NOTE: In Top Down Approach ( Recursive approach ), if there is need of passing arrays/strings as parameter,
+// then pass arrays/strings by address ( to avoid time and memory in copying the array/string in a new function call )
 
 // ( In some cases, not doing this may result in TLE, just like in this question LCS on Leetcode )
 
@@ -9,7 +9,7 @@ int dp[1001][1001];
 class Solution {
 public:
 
-    // passing strings by address to avoid time and memory in copying the string in a new function call
+    // passing arrays/strings by address to avoid time and memory in copying the array/string in a new function call
     // ( will result in TLE if not passed by address )
     int solve_lcs(string &x, string &y, int m, int n) {
 
