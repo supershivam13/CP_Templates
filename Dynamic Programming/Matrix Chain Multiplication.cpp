@@ -37,7 +37,8 @@ int main()
     int n;
     cin >> n;
     int arr[n];
-    arrin(a, n);
+    for(int i=0;i<n;i++)
+        cin>>arr[i];
 
     // Initialising Dp array with -1
     memset(dp, -1, sizeof(dp));
@@ -45,4 +46,3 @@ int main()
     // Calling function with values 1 and n-1 because 0 is not a valid input for i ( So, start with i=1 and j=n-1 )
     cout << "Minimum cost/number of multiplications is " << matrixChainMemoised(arr, 1, n - 1);
 }
-
