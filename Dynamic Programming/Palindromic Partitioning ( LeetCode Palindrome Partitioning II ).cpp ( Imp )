@@ -1,0 +1,87 @@
+// DP matrix to memoize the minimum number of partitions
+int dp[2010][2010];
+
+// Another DP Matrix to memoize the isPalindrome function
+int dp2[2010][2010];
+
+class Solution {
+public:
+    // function to check whether the string from (i,j) is palindrome or not
+    bool isPalindrome(string &s, int i, int j) {
+
+        // string of length 1 or less( empty string ) is already a palindrome
+        // so return true and store in the dp2 matrix ( either 1 or greater than 0 value will be stored )
+        if (i >= j)
+            return dp2[i][j] = true;
+
+        // IsPalindrome function memoization
+        if (dp2[i][j] != -1)
+            return dp2[i][j];
+
+        // if characters at ith and jth place are equal, then call recursively to the IsPalindrome function
+        // and storing the result in the dp2 matrix ( 0 if false, else some value > 0 in case of true )
+        if (s.at(i) == s.at(j))
+            return dp2[i][j] = isPalindrome(s, i + 1, j - 1);
+        else
+            return dp2[i][j] = false;
+
+    }
+
+    int solve(string &s, int i, int j) {
+
+        // string of length 1 or less( empty string ) is already a palindrome
+        // so requires 0 partitions
+        if (i >= j)
+            return dp[i][j] = 0;
+
+        // Now, Checking if the string is already a palindrome, then 0 partitions are required
+
+        // first checking in the dp2 matrix whether string from i to j is already a palindrome
+        if (dp2[i][j] != -1 and dp2[i][j] > 0)
+            return dp[i][j] = 0;
+        // else calling the isPalindrome function to check, and if found true, 0 partitions are required
+        else if (isPalindrome(s, i, j) == true)
+            return dp[i][j] = 0;
+
+        // Memoization ( if min number of partitions from (i,j) is already solved )
+        if (dp[i][j] != -1)
+            return dp[i][j];
+
+        int ans = INT_MAX;
+
+        for (int k = i; k <= j - 1; k++) {
+
+            int left, right;
+
+            // Checking before calling the recursive function on the left partitioned string
+            if (dp[i][k] != -1)
+                left = dp[i][k];
+            else
+                left = solve(s, i, k), dp[i][k] = left;
+
+            // Checking before calling the recursive function on the right partitioned string
+            if (dp[k + 1][j] != -1)
+                right = dp[k + 1][j];
+            else
+                right = solve(s, k + 1, j), dp[k + 1][j] = right;
+
+            // 1 partition is required here to divide in left and right
+            int temp = left + right + 1;
+
+            ans = min(ans, temp);
+        }
+
+        // storing the ans before returning the ans
+        return dp[i][j] = ans;
+    }
+
+    // Solution starts from here
+    int minCut(string s)
+    {
+        // Initializing both DP Matrix with -1
+        memset(dp, -1, sizeof(dp));
+        memset(dp2, -1, sizeof(dp2));
+
+        return solve(s, 0, s.length() - 1);
+    }
+};
