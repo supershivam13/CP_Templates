@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+unordered_map<string, bool> mp;
+
 bool isScramble(string S1, string S2)
 {
     // Strings of non-equal length cant' be scramble strings
@@ -27,6 +29,16 @@ bool isScramble(string S1, string S2)
     if (copy_S1 != copy_S2)
         return false;
 
+    // Generation of key to memoize the results in the map 'mp'
+    string key = S1;
+    key.push_back(' ');
+    key.append(S2);
+
+    // MEMOIZATION
+    if (mp.find(key) != mp.end())
+        return mp[key];
+        
+
 
     for (int i = 1; i < n; i++) {
 
@@ -46,21 +58,20 @@ bool isScramble(string S1, string S2)
     }
 
     // If none of the above conditions are satisfied
-    return false;
+    return mp[key] = false;
 }
 
 // Driver Code
 int main()
 {
+    mp.clear();
+
     string S1 = "coder";
     string S2 = "ocred";
 
-    if (isScramble(S1, S2)) {
+    if (isScramble(S1, S2))
         cout << "Yes";
-    }
-    else {
+    else
         cout << "No";
-    }
 
-    return 0;
 }
