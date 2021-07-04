@@ -61,7 +61,8 @@ void init(string input_string)
 lli substringHash(int L , int R)
 {
     int result = dp[R];
-
+    
+    // adding mod so that results never become negative
     if (L > 0) result = ( result - dp[L - 1] + mod) % mod;
 
     result = (result * inv[L]) % mod;
