@@ -62,7 +62,7 @@ lli substringHash(int L , int R)
 {
     int result = dp[R];
 
-    if (L > 0) result -= dp[L - 1];
+    if (L > 0) result = ( result - dp[L - 1] + mod) % mod;
 
     result = (result * inv[L]) % mod;
 
