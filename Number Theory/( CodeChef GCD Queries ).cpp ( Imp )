@@ -115,16 +115,16 @@ int pre[1000001];
 // GCD Suffix Array
 int suf[1000001];
 
+int gcd(int a, int b) {
+    if (b == 0)return a;
+    return gcd(b, a % b);
+}
 
 int32_t main()
 {
     fio;
 
     w(t) {
-
-        // for multiple test cases
-        memset(pre, 0, sizeof(pre));
-        memset(suf, 0, sizeof(suf));
 
         int n, q, l, r;
         cin >> n >> q;
@@ -140,21 +140,17 @@ int32_t main()
 
         // Pre-computing the prefix array - ( NlogN )
         fo(i, 1, n)
-        pre[i] = __gcd(pre[i - 1], a[i]);
+        pre[i] = gcd(pre[i - 1], a[i]);
 
         // Pre-computing the suffix array
         for (int i = n; i >= 1; i--)
-            suf[i] = __gcd(suf[i + 1], a[i]);
+            suf[i] = gcd(suf[i + 1], a[i]);
 
 
         while (q--) {
             cin >> l >> r;
-            cout << __gcd(pre[l - 1], suf[r + 1]) << endl;
+            cout << gcd(pre[l - 1], suf[r + 1]) << endl;
         }
 
     }
 }
-
-
-
-
