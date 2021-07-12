@@ -17,7 +17,7 @@ public:
         for (int i = 1; i <= n + 1; i++)
             dp[i][m + 1] = INT_MAX;
 
-        // Since cost to reach (n,m) from (n,m) is just a[n][m], so that min of both is zero
+        // Base Case - Since cost to reach (n,m) from (n,m) is just a[n][m], so that min of both is zero
         dp[n + 1][m] = dp[n][m + 1] = 0;
 
         for (int i = n; i >= 1; i--) {
