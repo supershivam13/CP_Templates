@@ -22,7 +22,9 @@ public:
 
         for (int i = n; i >= 1; i--) {
             for (int j = m; j >= 1; j--) {
+
                 // cost to reach (n,m) from (i,j) is a[i][j] + min(right, down)
+                // Here a[][] is 0 based indexed so a[i-][j-1] in place of a[i][j]
                 dp[i][j] = a[i - 1][j - 1] + min(dp[i + 1][j], dp[i][j + 1]);
             }
         }
