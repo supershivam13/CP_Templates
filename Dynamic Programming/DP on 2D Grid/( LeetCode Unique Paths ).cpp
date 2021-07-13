@@ -5,7 +5,8 @@ public:
 
     //return number of paths from (1,1) to (n,m) when only down or right movement is available
     int uniquePaths(int n, int m) {
-
+        
+        // 1-based indexing
         // when in the last row or last column, only 1 way is possible to reach (n,m)
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
