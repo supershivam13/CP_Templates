@@ -56,6 +56,7 @@ public:
         int n = intervals.size();
 
         // adding all the non-overlapping intervals before the newInterval
+        // [a,b] and [b,c] are considered as overlapping intervals
         while (i < n and intervals[i][1] < newInterval[0]) {
             ans.pb(intervals[i]);
             i++;
