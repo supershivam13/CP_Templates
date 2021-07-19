@@ -121,12 +121,14 @@ int a[100001];
 int32_t main()
 {
     fio;
-    c_p_c();
+    // c_p_c();
 
-    int n;
-    cin >> n;
+    int n, k;
+    cin >> n >> k;
     f(i, n)
     cin >> a[i];
+
+
 
     // getting the sum of the elements of first window of size k
     int sum = accumulate(a, a + k, 0);
@@ -155,7 +157,7 @@ int32_t main()
         }
     }
 
-    cout << "Minimum Sum of a Subarray -" << ans_min << endl;
-    cout << "Maximum Sum of a Subarray -" << ans_max << endl;
+    cout << "Minimum Sum of a Subarray : " << ans_min << endl;
+    cout << "Maximum Sum of a Subarray : " << ans_max << endl;
 
 }
