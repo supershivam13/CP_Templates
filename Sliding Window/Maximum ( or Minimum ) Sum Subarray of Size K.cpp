@@ -149,7 +149,9 @@ int32_t main()
         }
         // for subsequent windows of size k ( except the first window )
         else {
-
+            
+            // Remember i is already incremented by the for loop
+            
             // adding the next element in the window and removing the last element to move window
             sum = sum + a[i + k - 1] - a[i - 1];
             ans_min = min(ans_min, sum);
