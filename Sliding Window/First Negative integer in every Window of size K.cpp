@@ -110,10 +110,10 @@ void c_p_c()
 #endif
 }
 
-// Maximum (or Minimum) Sum of a Subarray of size K
+
 
 // TIME COMPLEXITY - O(N)
-// SPACE COMPLEXITY - O(1)
+// SPACE COMPLEXITY - O(K)
 
 int a[100001];
 
