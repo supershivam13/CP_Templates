@@ -37,6 +37,8 @@ public:
             ans.push_back(minh.top());
             minh.pop();
         }
+        
+        reverse(ans.begin(),ans.end());
 
         return ans;
     }
