@@ -34,7 +34,8 @@ public:
             if (mx.size() > k)
                 mx.pop();
         }
-
+        
+        // inserting the remaining elements of the heap to the ans vector
         while (mx.size() > 0) {
             ans.push_back(mx.top().second);
             mx.pop();
