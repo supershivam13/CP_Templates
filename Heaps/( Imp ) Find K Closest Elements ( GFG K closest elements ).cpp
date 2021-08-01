@@ -40,7 +40,7 @@ public:
                 mx.pop();
         }
 
-        // inserting the remaining elements of the heap to the ans vector
+        // inserting the elements of the heap to the ans vector
         while (mx.size() > 0) {
             ans.push_back(-1 * (mx.top().second));
             mx.pop();
