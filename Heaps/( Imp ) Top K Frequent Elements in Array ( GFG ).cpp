@@ -13,9 +13,24 @@
 // so, pushing an elements take logK time, so overall TC - O( NlogK ) )
 
 
+// HEAP QUESTIONS
+
+// IDENTIFICATION
+// Two keywords occurs together - 1) K                2) Largest/Smallest
+
+// a) K + Largest =  MIN HEAP
+// b) K + Smallest = MAX_HEAP
+
+// **********************************************************************************************
+
+// Time Complexity - O( NlogK )
+// ( A for loop of N complexity and we never stores more than k elements in heap at any moment
+// so, pushing an elements take logK time, so overall TC - O( NlogK ) )
+
+
 class Solution {
 public:
-    vector<int> topKFrequent(vector<int>& a, int k) {
+    vector<int> topK(vector<int>& a, int k) {
 
         // MIN HEAP of pair { frequency, element}
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>> > minh;
@@ -35,6 +50,10 @@ public:
         for (auto i : mp) {
             minh.push({i.second, i.first});
 
+            // sorting will be done on the basis of first element of pair
+            // in case first elements of pair are equal, then sorting done on basis of second
+            // so the pair with smaller second element will be popped ( as per requirement of ques )
+
             if (minh.size() > k)
                 minh.pop();
         }
@@ -44,6 +63,8 @@ public:
             ans.push_back(minh.top().second);
             minh.pop();
         }
+
+        reverse(ans.begin(), ans.end());
 
         return ans;
 
