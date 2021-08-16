@@ -28,12 +28,15 @@ class Solution {
 
     // Function to return the index of the maximum(pivot) element
     int find_pivot(vector<int>& nums, int left, int right)
-    {
+    {   
+        // if the array on which function is called is strictly increasing
+        // (it don't has the BC part of the graph )
         if (nums[left] < nums[right])
             return right;
 
         int mid;
-
+        
+        // Binary Search
         while (left <= right)
         {
             mid = left + ((right - left) / 2);
