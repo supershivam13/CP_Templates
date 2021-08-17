@@ -5,6 +5,14 @@
 // improve the complexity using binary search }
 
 
+// Property of Binary Search :-
+// When a target element is not present in the array, then at the end of the loop, 'start' index points to the
+// ceil element of the target and 'end' index points to the floor value of the target.
+
+
+// *************************************************************************************************************
+
+
 class Solution {
 public:
     int findFloor(vector<long long> v, long long n, long long x) {
