@@ -1,3 +1,20 @@
+// BINARY SEARCH
+
+// Identification -
+// Whenever 'sorted' word is used, always think of Binary Search {i.e whenever sorted data is given, we might can
+// improve the complexity using binary search }
+
+
+// Property of Binary Search :-
+// When a target element is not present in the array, then at the end of the loop, 'start' index points to the
+// ceil element of the target and 'end' index points to the floor value of the target.
+
+
+// *************************************************************************************************************
+
+
+
+
 class Solution {
 public:
     int count(int a[], int n, int target) {
