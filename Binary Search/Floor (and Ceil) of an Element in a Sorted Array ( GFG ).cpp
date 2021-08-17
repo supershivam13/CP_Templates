@@ -37,5 +37,8 @@ public:
 
         return res;
 
+        // Similarily, Ceil of an element can also be found with minor changes.
+        // In ceil, we store the indexes of the potential elments which can be floor when moving to left.
+
     }
 };
