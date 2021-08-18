@@ -1,3 +1,5 @@
+// Time Complexity -  O(m+n)
+
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& a, int x) {
