@@ -11,6 +11,9 @@
 
 
 // *************************************************************************************************************
+
+// Time Complexity - O( log(m*n) )
+
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& a, int x) {
