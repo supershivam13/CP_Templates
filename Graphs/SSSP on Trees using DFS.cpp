@@ -1,9 +1,3 @@
-/*
-    Author      : SHIVAM SAHU
-    Institution : IIT PATNA
-    Country     : INDIA
-*/
-
 #include<bits/stdc++.h>
 // #include <ext/pb_ds/assoc_container.hpp>
 // #include <ext/pb_ds/tree_policy.hpp>
@@ -99,6 +93,13 @@ const int lim   = 100005;
 //  stoll() funtion - converts string to long long ( Example- long long x = stoll(s) )
 //  to_string() function - converts integer to string ( Example- string s = to_string(x) )
 
+
+// ********************************************************************************************
+
+// SSSP is always calculated using BFS method ( Standard method for SSSP is BFS )
+
+// BFS for SSSP calculation can be used on both Trees and Graphs
+// while DFS for SSSP calculation is used only for Trees ( not for Graphs ).
 
 
 
