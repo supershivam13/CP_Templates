@@ -21,7 +21,7 @@ public:
             long s = minh.top();
             minh.pop();
 
-            // cost of connecting two ropes of length 'f' and 'f'  is f+s
+            // cost of connecting two ropes of length 'f' and 's'  is f+s
             cost += (f + s);
 
             // now we got a rope of length f+s , so inserting it in heap too
