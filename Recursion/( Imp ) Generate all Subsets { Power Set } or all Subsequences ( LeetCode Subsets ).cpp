@@ -1,3 +1,15 @@
+// Recursion -
+
+// 3 Approaches towards Recursion
+// a) Recusrive Tree ( using I/P O/P method )
+// b) Base-Condition-Hypothesis-Induction ( making I/P smaller )
+// c) Choice Diagram  ( DP )
+
+
+// ************************************************************************************
+
+// a) Recursive Tree ( using I/P O/P method ) is used here.
+
 class Solution {
 public:
     vector<vector<int>> ans;
