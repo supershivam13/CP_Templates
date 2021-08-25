@@ -1,8 +1,21 @@
-/*
-    Author      : SHIVAM SAHU
-    Institution : IIT PATNA
-    Country     : INDIA
-*/
+// TRIES
+
+// a) efficient information retrieval data structure
+// b) searchs in optimal time O( word.length() ), but takes extra space for storage
+
+
+// IMPORTANT -
+
+// A Normal Trie is also called a Prefix Trie because it contains all the prefixes of a word as well.
+// A Suffix Trie is a Trie in which we insert all the sufffixes of the word along with the full word { as full word is also a suffix }.
+
+
+// Insertion in Trie - O( word.length() );
+// Searching in Trie - O( word.length() )
+
+
+// **********************************************************************************
+
 
 #include<bits/stdc++.h>
 // #include <ext/pb_ds/assoc_container.hpp>
