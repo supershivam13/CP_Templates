@@ -165,7 +165,7 @@ int getAns(node *root , string st)
     return tempRoot->count;
 }
 
-int main()
+int32_t main()
 {
     // Creating the main root node of Trie
     node *root = getNode();
