@@ -12,6 +12,10 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// Time Complexity - O(N) 
+
+
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
