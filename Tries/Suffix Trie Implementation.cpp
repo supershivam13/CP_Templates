@@ -10,6 +10,12 @@
 // A Suffix Trie is a Trie in which we insert all the sufffixes of the word along with the full word { as full word is also a suffix }.
 
 
+// Insertion in Suffix Trie - O( N*N ) { where n is the word length }
+// Searching in Suffx Trie - O( N )
+
+
+
+// Normal Trie ( Prefix Trie )
 // Insertion in Trie - O( word.length() );
 // Searching in Trie - O( word.length() )
 
