@@ -35,7 +35,7 @@ public:
         pair<int, int> left = OptimisedDiameter(root->left);
         pair<int, int> right = OptimisedDiameter(root->right);
 
-        // Now calculating the heigth and diamter using the results of recursive calls
+        // Now calculating the heigth and diamter of the parent node using the results of recursive calls on childs.
 
         p.second = max(left.second, right.second) + 1;
 
