@@ -24,9 +24,10 @@ void dfs(int x ,int y)
 {
 	vis[x][y] = 1;
 	
-	for(int i=0;i<4;i++)
-	if(isValid(x + dx[i] , y + dy[i]))
-	dfs(x + dx[i] , y + dy[i]);
+	for(int i=0;i<4;i++){
+		if(isValid(x + dx[i] , y + dy[i]))
+			dfs(x + dx[i] , y + dy[i]);
+	}
 }
 
 
