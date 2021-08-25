@@ -1,3 +1,10 @@
+// TRIES
+
+// a) efficient information retrieval data structure
+// b) searchs in optimal time O( word.length() ), but takes extra space for storage
+
+
+
 // Insertion in Trie - O( word.length() );
 // Searching in Trie - O( word.length() )
 
