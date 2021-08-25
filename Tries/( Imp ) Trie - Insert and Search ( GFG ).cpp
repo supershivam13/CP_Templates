@@ -11,6 +11,32 @@
 
 // **********************************************************************************
 
+
+// structure of TrieNode ( as given )
+
+// struct TrieNode {
+//     bool isLeaf;
+//     TrieNode* childern[SIZE];
+// };
+
+
+// Function to create a new node and return back its address
+
+// TrieNode* getNode()
+// {
+//     // creating a dynamically allocated new node
+//     TrieNode* n = new TrieNode;
+// 
+//     n->isLeaf = false;
+// 
+//     // initialising all the addresses in the arr array as NULL
+//     for (int i = 0; i < SIZE; i++)
+//         n->childern[i] = NULL;
+// 
+//     return n;
+// }
+
+
 //Function to insert string into TRIE.
 void insert(struct TrieNode *root, string key)
 {
