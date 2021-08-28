@@ -1,20 +1,4 @@
-// Time Complexity - O(N*N)
-
-/*
-
-struct Node
-{
-    int data;
-    struct Node* left;
-    struct Node* right;
-
-    Node(int x){
-        data = x;
-        left = right = NULL;
-    }
-};
-
-*/
+// Time Complexity - O( N^2 )
 
 class Solution {
 public:
