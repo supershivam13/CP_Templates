@@ -1,6 +1,3 @@
-// Level Order Traversal is an example of PreOrder Traversal.
-
-
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
