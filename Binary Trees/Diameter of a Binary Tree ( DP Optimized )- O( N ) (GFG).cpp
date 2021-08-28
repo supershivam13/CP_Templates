@@ -1,4 +1,4 @@
-// Time Complexity - O( N )
+// Time Complexity - O( N ) { using DP }
 // { We are calculating height and diameter simulataneouly, so it is now O(N) }
 
 /*
