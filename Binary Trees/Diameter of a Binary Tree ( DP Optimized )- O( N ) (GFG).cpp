@@ -1,22 +1,6 @@
 // Time Complexity - O( N ) { using DP }
 // { We are calculating height and diameter simulataneouly, so it is now O(N) }
 
-/*
-
-struct Node
-{
-    int data;
-    struct Node* left;
-    struct Node* right;
-
-    Node(int x){
-        data = x;
-        left = right = NULL;
-    }
-};
-
-*/
-
 class Solution {
 public:
 
