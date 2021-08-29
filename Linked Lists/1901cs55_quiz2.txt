@@ -1,0 +1,19 @@
+Name - Shivam Sahu
+Roll No.- 1901CS55
+
+
+Q-1   b) I and III only
+Q-2   b) (a*b*)*
+Q-3   b) y
+Q-4   b) 5
+Q-5   c) ab(a+b)*bba
+Q-6   d) String with even number of zero’s
+Q-7   b)
+Q-8   b)
+Q-9   a)
+Q-10  a)
+Q-11  c)
+Q-12  b)
+Q-13  a)
+Q-14  c) It can’t remember an arbitrary large amount of information
+Q-15  a) phi
