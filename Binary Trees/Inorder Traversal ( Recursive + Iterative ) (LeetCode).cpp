@@ -1,3 +1,5 @@
+// Inorder Traversal of Binary Search Tree (BST) { not of Binary Tree } is always sorted.
+
 // METHOD 1 - USING RECURSION
 // Time Complexity - O(N)
 
