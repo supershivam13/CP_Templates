@@ -21,7 +21,7 @@
 
 // struct TrieNode {
 //     bool isLeaf;
-//     TrieNode* childern[SIZE];
+//     unordered_map<int, TrieNode*> children;
 // };
 
 
@@ -33,10 +33,6 @@
 //     TrieNode* n = new TrieNode;
 // 
 //     n->isLeaf = false;
-// 
-//     // initialising all the addresses in the arr array as NULL
-//     for (int i = 0; i < SIZE; i++)
-//         n->childern[i] = NULL;
 // 
 //     return n;
 // }
