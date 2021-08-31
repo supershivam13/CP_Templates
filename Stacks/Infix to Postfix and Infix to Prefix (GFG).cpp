@@ -1,3 +1,5 @@
+// INFIX TO POSTFIX ( More Important than Infix to Prefix )
+
 // Algorithm -
 
 // 1. Scan the infix expression from left to right.
@@ -86,3 +88,21 @@ public:
         return result;
     }
 };
+
+
+
+// *******************************************************************************
+
+
+
+
+// INFIX TO PREFIX
+
+// Same as Infix to Postfix, only Two steps needed to be done before.
+
+// Steps -
+
+// 1. Reverse the string.
+// 2. Change all open brackets to close and vice versa.
+
+// After this, it is same as Infix to Postfix conversion
