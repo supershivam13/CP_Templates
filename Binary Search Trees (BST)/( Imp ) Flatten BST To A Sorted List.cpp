@@ -1,3 +1,4 @@
+// Take care that prev pointer should be passed by reference in this inorder traversal
 void inorder(node* curr, node*& prev)
 {
     // Base case
