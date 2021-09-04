@@ -1,3 +1,11 @@
+// INSERTION SORT
+
+// Time Complexity - O ( N^2 )
+// Space Complexity - O(1)
+// Stability - Stable ( Only Quick, Selection, Heap are unstable, rest all are stable )
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
