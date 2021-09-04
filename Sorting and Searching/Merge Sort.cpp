@@ -1,4 +1,8 @@
-// Time Complexity - O( nlogn )
+// MERGE SORT
+
+// Time Complexity - O ( N*logN )
+// Space Complexity - O( N )
+// Stability - Stable ( Only Quick, Selection, Heap are unstable, rest all are stable )
 
 
 #include <bits/stdc++.h>
