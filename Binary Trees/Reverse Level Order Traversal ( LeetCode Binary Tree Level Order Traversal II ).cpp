@@ -6,24 +6,12 @@
 
 // *******************************************************************************************
 
-/*
-
-struct Node
-{
-    int data;
-    Node* left;
-    Node* right;
-};
-
-*/
-
 vector<int> reverseLevelOrder(Node *root)
 {
     vector<int> ans;
 
     // Queue used in BFS ( Level Order Traversal == BFS )
     queue<Node*> q;
-
     q.push(root);
 
     while (!q.empty()) {
@@ -39,12 +27,9 @@ vector<int> reverseLevelOrder(Node *root)
 
         if (curr->left != NULL)
             q.push(curr->left);
-
     }
 
     // b) reverse the vector to get the correct Reverse Level Order Traversal
     reverse(ans.begin(), ans.end());
-
     return ans;
-
 }
