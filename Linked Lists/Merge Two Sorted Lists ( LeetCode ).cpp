@@ -65,14 +65,18 @@ public:
         if (b == NULL)
             return a;
 
-        ListNode* c;
+        ListNode* result;
 
         // SORTING THE LISTS RECURSIVELY
-        if (a->val < b->val)
-            c = a, c->next = mergeTwoLists(a->next, b);
-        else
-            c = b, c->next = mergeTwoLists(a, b->next);
+        if (a->val < b->val) {
+            result = a;
+            result->next = mergeTwoLists(a->next, b);
+        }
+        else {
+            result = b;
+            result->next = mergeTwoLists(a, b->next);
+        }
 
-        return c;
+        return result;
     }
 };
