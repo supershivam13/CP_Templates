@@ -9,7 +9,7 @@
 using namespace std;
 
 // Merges two parts of array[] - [s,mid], [mid+1,end]
-void merge(int *a, int left, int mid, int right)
+void merge(int a[], int left, int mid, int right)
 {
     // size of left subarray
     int size1 = mid - left + 1;
