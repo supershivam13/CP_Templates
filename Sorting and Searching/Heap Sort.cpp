@@ -33,8 +33,6 @@ void heapify(int a[], int n, int i)
     }
 }
 
-
-// HEAP SORT
 void heapSort(int a[], int n)
 {
     // Build heap for all nodes i which has childrens (rearrange array)
@@ -47,8 +45,7 @@ void heapSort(int a[], int n)
         // Move current root to end
         swap(a[0], a[i]);
 
-        // call heapify on the reduced heap
-        // now size of the heap is i and it is rooted at 0
+        // call heapify on the reduced heap( now size of the heap is i and it is rooted at 0 )
         heapify(a, i, 0);
     }
 }
