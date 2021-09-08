@@ -5,9 +5,6 @@
 // A vector can also be soted using recursion by this same approach. Only replace the stack with the vector
 // and replace the stack functions like pop(),push() , etc with vector functions like pop_back(),push_back(),etc.
 
-
-// ************************************************************************************************
-
 void insert(stack<int> st, int element) {
 
     // Base Condition OR element need to be stored at the top of the stack
