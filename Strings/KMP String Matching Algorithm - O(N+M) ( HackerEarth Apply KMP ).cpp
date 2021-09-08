@@ -130,7 +130,7 @@ int32_t main()
 
         int j = lps[i - 1];
 
-        while (s[i] != s[j] and j > 0)
+        while (j > 0 and [i] != s[j])
             j = lps[j - 1];
 
         if (s[i] == s[j])
