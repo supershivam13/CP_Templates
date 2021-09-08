@@ -19,7 +19,6 @@ public:
     void balParanthesis(int open, int close, string output) {
 
         // Base condition, when both open and close are zero, then we get a balanced Paranthesis string
-        // ( leaf node of the recursive tree )
         if (open == 0 and close == 0) {
             ans.push_back(output);
             return;
@@ -39,19 +38,15 @@ public:
             out2 += ")";
             balParanthesis(open, close - 1, out2);
         }
-
     }
 
-    // Solution starts here
     vector<string> generateParenthesis(int n) {
-
         // Initially, we have 'n' open and 'n' close brackets
         int open = n;
         int close = n;
 
         // initialised output string
         string output = "";
-
         // recursive function tog
         balParanthesis(open, close, output);
 
