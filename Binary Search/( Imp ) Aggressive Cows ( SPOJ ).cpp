@@ -44,24 +44,18 @@ bool isvalid(vector<int>&a, int n, int c, int dist) {
         return false;
 }
 
-
 int AggresiveCows(vector<int>& a, int c) {
 
     int n = a.size();
     sort(a.begin(), a.end());
+    int res = -1, mid;
 
     // position of stalls are not given distinct, so minimum distance between any two balls can be 0.
     int low = 0;
-
     // maximum distance between two cows = distance between first and last stall
     int high = a[n - 1] - a[0];
 
-    int mid;
-    int res = -1;
-
-    // Binary Search
     while (low <= high) {
-
         mid = low + ((high - low) / 2);
 
         // isvalid function returns true if it is possible to place c cows with minimum distance 'mid'
@@ -74,7 +68,6 @@ int AggresiveCows(vector<int>& a, int c) {
         else
             high = mid - 1;
     }
-
     return res;
 }
 
