@@ -35,17 +35,18 @@ int partition (int arr[], int low, int high)
 
 // QUICK SORT
 void quickSort(int arr[], int low, int high)
-{
-    // Base condition (atleast two element in array)
-    if (low < high)
-    {
-        // pi is partitioning index, arr[pi] is now at right place
-        int pi = partition(arr, low, high);
+{   
+    // Base Condition -> 1 or 0 or -1 elements
+    if(low>=high)
+        return;
+        
+    // pi is partitioning index, arr[pi] is now at right place
+    int pi = partition(arr, low, high);
 
-        // Separately sort elements before partition and after partition
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
-    }
+    // Separately sort elements before partition and after partition
+    quickSort(arr, low, pi - 1);
+    quickSort(arr, pi + 1, high);
+    
 }
 
 
