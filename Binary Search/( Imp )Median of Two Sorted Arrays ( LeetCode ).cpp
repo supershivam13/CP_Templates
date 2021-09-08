@@ -27,13 +27,11 @@
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-
         // nums1 should be of smaller size, if not, call recursively with arrays swapped in parameters
         if (nums1.size() > nums2.size())
             return findMedianSortedArrays(nums2, nums1);
 
         int n1 = nums1.size(), int n2 = nums2.size();
-
         // low, high indicates the minimum and maximum elements that can be taken from the nums1 array in the partition
         int low = 0, high = n1;
 
