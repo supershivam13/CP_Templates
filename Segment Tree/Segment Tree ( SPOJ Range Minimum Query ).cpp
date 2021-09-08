@@ -135,11 +135,10 @@ void build(int s_ind, int ss, int se) {
         return;
     }
 
-    int mid = (ss + se) / 2;
+    int mid = ss + ((se - ss) / 2);
 
     // left subtree
     build(2 * s_ind, ss, mid);
-
     // right subtree
     build(2 * s_ind + 1, mid + 1, se);
 
@@ -167,14 +166,11 @@ int query(int s_ind, int ss, int se, int qs, int qe) {
     // getting the result from the right subtree
     int right_result = query((2 * s_ind) + 1, mid + 1, se, qs, qe);
 
-
     return min(left_result, right_result);
 }
 
-
 int32_t main()
 {
-
     fio;
     int n;
     cin >> n;
@@ -197,8 +193,5 @@ int32_t main()
         // Here, we are passing + 1 as question is using 0-based indexing
         // and we have used 1-based indexing for making the segment tree
         cout << query(1, 1, n, qs + 1, qe + 1) << endl;
-
     }
-
-
 }
