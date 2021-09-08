@@ -100,16 +100,14 @@ const int lim   = 1000006;    // lim = 10^6 + 6
 //  stoll() funtion - converts string to long long ( Example- long long x = stoll(s) )
 //  to_string() function - converts integer to string ( Example- string s = to_string(x) )
 
+// ***************************************************************************************
 
 // KMP Algorithm - O(n+m)
-
-
 
 int32_t main()
 {
     string text, pattern;
     cin >> pattern >> text;
-
     int t = text.length();
     int p = pattern.length();
 
@@ -125,6 +123,7 @@ int32_t main()
     int lps[kmp_length];
     f(i, kmp_length)
     lps[i] = 0;
+    int ans = 0;
 
     // Main LPS ( Length of Longest Proper Prefix Function )
     fo(i, 1, kmp_length - 1) {
@@ -139,18 +138,13 @@ int32_t main()
 
         lps[i] = j;
     }
-
-    int ans = 0;
-
+    
     // in the lps array, the places where there lps[i] == length of the pattern, it confirms that there is a occurence
     // of pattern at that place, and lps[i] can never be greater than the length of pattern because we have added a
     // character ( # here ) which will never occur in the text string
-    f(i, kmp_length) {
+    f(i, kmp_length)
         if (lps[i] == p)
             ans++;
-    }
 
     cout << ans << endl;
-
-
 }
