@@ -155,7 +155,7 @@ int query(int s_ind, int ss, int se, int qs, int qe) {
     if (qs > se or qe < ss)
         return inf;
 
-    // completely inside
+    // completely inside ( segment completely inside the query range )
     if (ss >= qs and se <= qe)
         return segtree[s_ind];
 
