@@ -86,7 +86,6 @@ int32_t main()
                 // so no need to do anything in this case
                 if (d > (1 << i))
                     continue;
-
                 else {
                     // for i-th bit, if the range d lies completely in between the 1(set-bit) pack
                     // then the i-th bit will be 1 in the result
@@ -94,10 +93,7 @@ int32_t main()
                         ans += (1 << i);
                 }
             }
-
             cout << ans << endl;
-
         }
-
     }
 }
