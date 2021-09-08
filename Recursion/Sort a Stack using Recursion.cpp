@@ -12,7 +12,6 @@ void insert(stack<int> st, int element) {
         st.push(element);
 
     else {
-
         int temp = st.top();
         st.pop();
         // calling recursively on smaller stack to insert 'element' at the correct place
@@ -22,7 +21,6 @@ void insert(stack<int> st, int element) {
     }
 }
 
-// Solution starts here
 void sortedStack(stack<int> s) {
 
     // Base Condition
