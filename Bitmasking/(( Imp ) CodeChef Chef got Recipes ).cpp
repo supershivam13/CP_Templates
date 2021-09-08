@@ -78,24 +78,9 @@ const int lim   = 1000006;    // lim = 10^6 + 6
 #define rev(v)          reverse(v.begin(),v.end());
 
 
-
-void c_p_c()
-{
-    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
-}
-
-
-
 int32_t main()
 {
-
     fio;
-
-    c_p_c();
 
     // to store the frequencies of different arrangements of vowels in given strings
     // (i.e if 0th bit is set, then a is present, 1th bit is set, then e is present, and so on )
@@ -142,7 +127,7 @@ int32_t main()
 
             }
         }
-
+        
         // strings which already has all five vowels present can make pairs among themselves as well
         // so nC2 = ( n*(n-1) )/2
         result += ((freq[31] * (freq[31] - 1)) / 2);
