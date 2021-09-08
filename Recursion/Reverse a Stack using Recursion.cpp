@@ -7,7 +7,6 @@ using namespace std;
 
 stack<int> st;
 
-
 // recursive function that inserts an element at the bottom of a stack.
 void insert_at_bottom(int x)
 {
@@ -26,7 +25,6 @@ void insert_at_bottom(int x)
     // pushing the element 'a' after 'x' has been pushed in the stack
     st.push(a);
 }
-
 
 // Recursive function to reverse Stack
 void reverseStack() {
