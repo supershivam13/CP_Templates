@@ -18,10 +18,8 @@ void insert(stack<int> st, int element) {
 
         int temp = st.top();
         st.pop();
-
         // calling recursively on smaller stack to insert 'element' at the correct place
         insert(st, element);
-
         // then pushing back 'temp' in stack as temp < element, so 'temp' will be above than 'element' in stack
         st.push(temp);
     }
@@ -39,8 +37,6 @@ void sortedStack(stack<int> s) {
 
     // calling recursively on smaller stack
     sortedStack(s);
-
     // function to insert the temp element at the correct place in stack
     insert(s, temp);
-
 }
