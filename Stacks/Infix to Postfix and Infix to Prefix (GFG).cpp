@@ -46,7 +46,6 @@ public:
             // if 'c' is alphabet or number, append to the result string
             if (isalnum(c))
                 result += c;
-
             else if (c == '(')
                 st.push(c);
 
@@ -58,7 +57,6 @@ public:
                     result += st.top();
                     st.pop();
                 }
-
                 // pop the '(' opening bracket from the stack
                 st.pop();
             }
@@ -73,11 +71,9 @@ public:
                     result += st.top();
                     st.pop();
                 }
-
                 // push the operator 'c' into the stack
                 st.push(c);
             }
-
         }
 
         while (st.size()) {
