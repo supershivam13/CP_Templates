@@ -60,10 +60,8 @@ public:
                 // pop the '(' opening bracket from the stack
                 st.pop();
             }
-
             // if 'c' is an operator
             else {
-
                 // append all the element present in stack to the result until precedence of stack.top()
                 // become less than that of incoming operator 'c'
                 // This loop won't run if the prec(c) is already greater than prec(s.top())
@@ -71,8 +69,7 @@ public:
                     result += st.top();
                     st.pop();
                 }
-                // push the operator 'c' into the stack
-                st.push(c);
+                st.push(c);  // push the operator 'c' into the stack
             }
         }
 
