@@ -130,7 +130,6 @@ int32_t main()
 
     // vector to store the final result
     vector<int> ans;
-
     // deque to store the list of potentials which can be maximum
     deque <int> d;
 
@@ -144,7 +143,6 @@ int32_t main()
 
         d.push_back(a[i]);
     }
-
 
     // SLIDING WINDOW TECHNIQUE
     for (int i = 0; i <= n - k; i++) {
@@ -175,5 +173,4 @@ int32_t main()
 
     for (auto ele : ans)
         cout << ele << " ";
-
 }
