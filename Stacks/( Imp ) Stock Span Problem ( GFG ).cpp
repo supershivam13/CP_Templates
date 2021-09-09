@@ -24,7 +24,6 @@ public:
     {
         // vector to return and store the final result
         vector<int> v;
-
         // stack to store pairs { element , index}
         stack < pair<int, int> > s;
 
@@ -49,7 +48,6 @@ public:
                 else
                     v.push_back(s.top().second);
             }
-
             // pushing the { elemennt, index } into the stack after its processing is done
             s.push({a[i], i});
         }
