@@ -45,9 +45,8 @@ public:
                     v.push_back(-1);
                 else
                     v.push_back(s.top());
-
             }
-
+            
             // inserting the element in the stack after its processing for NGE is done
             s.push(a[i]);
         }
