@@ -17,21 +17,18 @@ public:
         unordered_map<char, int> mp;
 
         while (j < n) {
-
             mp[s[j]]++;
 
             // this if statement will never will be executed
             // as it never will be true
             if (mp.size() > j - i + 1)
                 j++;
-
             // when there is all unique characters in the window, then window size = map.size()
             // so, it can be a potential candidate for ans
             else if (mp.size() == j - i + 1) {
                 ans = max(ans, j - i + 1);
                 j++;
             }
-
             // when there is some repeating characters in the window, so removing elements till the
             // window size = map.size()
             else {
@@ -47,6 +44,5 @@ public:
             }
         }
         return ans;
-
     }
 };
