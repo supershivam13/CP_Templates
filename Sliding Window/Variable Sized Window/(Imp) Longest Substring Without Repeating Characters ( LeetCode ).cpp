@@ -22,9 +22,8 @@ public:
 
             // this if statement will never will be executed
             // as it never will be true
-            if (mp.size() > j - i + 1) {
+            if (mp.size() > j - i + 1)
                 j++;
-            }
 
             // when there is all unique characters in the window, then window size = map.size()
             // so, it can be a potential candidate for ans
@@ -36,7 +35,6 @@ public:
             // when there is some repeating characters in the window, so removing elements till the
             // window size = map.size()
             else {
-
                 while (mp.size() < j - i + 1) {
                     mp[s[i]]--;
 
@@ -45,7 +43,6 @@ public:
 
                     i++;
                 }
-
                 j++;
             }
         }
