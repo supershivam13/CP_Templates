@@ -8,7 +8,6 @@ public:
         stack<int> st;
 
         for (int i = 0; i < n; i++) {
-
             char c = s[i];
 
             // if 'c' is an operator, then pop two elements from the stack
@@ -28,13 +27,10 @@ public:
                     st.push(b + a);
                 else
                     st.push(b - a);
-
             }
             else
                 st.push(c - '0');
-
         }
-
         return st.top();
     }
 };
