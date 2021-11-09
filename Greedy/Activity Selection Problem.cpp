@@ -1,8 +1,9 @@
 bool comparator(pair<int, int> a, pair<int, int> b ) {
-    return a.second < b.second;
 
     if (a.second == b.second)
         return a.first < b.first;
+    
+    return a.second < b.second;
 }
 
 class Solution {
