@@ -46,7 +46,7 @@ public:
             // if element to be popped is even smaller than min_ele itself indicating that it's the place
             // for the minimum element in stack and correct value is present in min_ele
 
-            // now it's the mechanism to retreive back the last min element and store it in min_ele
+            // now it's the mechanism to retreive back the last(previous) min element and store it in min_ele
             // some sort of reverse mechanishm of ((val*2)- min_ele)
             else {
                 min_ele = (min_ele * 2) - s.top();
