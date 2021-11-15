@@ -13,10 +13,10 @@ void merge(int a[], int left, int mid, int right)
 {
     // size of left subarray
     int size1 = mid - left + 1;
-
+    
     // size of left subarray
     int size2 = right - mid;
-
+    
     // Temporary Array
     int temp[size1 + size2];
 
@@ -44,9 +44,7 @@ void merge(int a[], int left, int mid, int right)
     // Now, finally copying all the elements from temp to the original array
     for (int i = left; i <= right; i++)
         a[i] = temp[i-left];
-
 }
-
 
 // s = start is for left index and e = end is right index of the sub-array of arr to be sorted
 void mergeSort(int a[], int s, int e)
@@ -56,9 +54,7 @@ void mergeSort(int a[], int s, int e)
         return;
 
     // 3 Steps -
-    // 1. Divide
-    // 2. Sort
-    // 3. Merge
+    // 1. Divide     2. Sort       3. Merge
 
     int mid = s + (e - s) / 2;
 
