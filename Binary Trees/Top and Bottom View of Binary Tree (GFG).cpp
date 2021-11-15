@@ -17,7 +17,7 @@ public:
     {
         vector<int> ans;
 
-        // map of {value,x-cordinate} to store the only first occurence at each new value of x
+        // map of {x-cordinate, value} to store the only first occurence at each new value of x
         map<int, int> m;
 
         // Perform Level Order traversal
