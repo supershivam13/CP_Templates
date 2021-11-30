@@ -358,7 +358,8 @@ bool isvalid(int x, int y) {
     return true;
 }
 
-// up , right, down , left
+// In matrix or 2D Grid, x-axis is vertcal and y-axis is horizontal (opposite as of Coordinate Geometry)
+// Up, Right, Down, Lef
 int dx[] = {0, -1, 0, 1, 0};
 int dy[] = {0, 0, 1, 0, -1};
 
