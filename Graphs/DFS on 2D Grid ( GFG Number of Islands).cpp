@@ -1,6 +1,7 @@
 int vis2d[1001][1001];
 
-// left, up, right, down, left-up, right-up, right-down, left-down
+// In matrix or 2D Grid, x-axis is vertcal and y-axis is horizontal (opposite as of Coordinate Geometry)
+// Up, Right, Down, Left, right-up, right-down, left-down, left-up,
 int dx[] = { -1, 0, 1, 0, -1, 1, 1, -1};
 int dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
 
