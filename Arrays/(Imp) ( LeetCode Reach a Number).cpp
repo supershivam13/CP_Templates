@@ -21,7 +21,7 @@ public:
         for (int i = 0; i < 1000005; i++) {
 
             sum = ((i + 1) * i) / 2;
-
+            
             if (sum >= target and (sum - target) % 2 == 0 )
                 return i;
         }
