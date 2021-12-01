@@ -22,8 +22,11 @@ public:
             return false;
 
         int last = nums.back();
+        // update in map
         m[last] = m[val];
+        // update in nums vector
         nums[m[val]] = last;
+        
         nums.pop_back();
         m.erase(val);
         return true;
