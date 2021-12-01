@@ -10,7 +10,6 @@ class Solution {
          
          mirror(node->left);
          mirror(node->right);
-         swap(node->left,node->right);
-         
+         swap(node->left,node->right);    
     }
 };
