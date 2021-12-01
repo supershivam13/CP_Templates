@@ -1,7 +1,6 @@
 // Take care that prev pointer should be passed by reference in this inorder traversal
 void inorder(node* curr, node*& prev)
 {
-    // Base case
     if (curr == NULL)
         return;
 
@@ -25,8 +24,7 @@ node* flatten(node* parent)
     inorder(parent, prev);
 
     // prev now points to the last node of the linked list, so storing NULL in left and right
-    prev->left = NULL;
-    prev->right = NULL;
+    prev->left = NULL, prev->right = NULL;
 
     // dummy still point to the extra node created which is attached before
     // the 1st node of the required linked list
