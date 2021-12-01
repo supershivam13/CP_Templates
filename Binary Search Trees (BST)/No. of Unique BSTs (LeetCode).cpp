@@ -12,7 +12,7 @@ public:
         for (int i = 2; i <= n; i++)
             // adding all scenes when j-1 nodes are on one side and (i-j) nodes on the other side
             for (int j = 1;  j <= i; j++)
-                dp[i] += (dp[j - 1] * dp[i - j]);
+                dp[i] += (dp[i - j] * dp[j - 1]);
 
         return dp[n];
     }
