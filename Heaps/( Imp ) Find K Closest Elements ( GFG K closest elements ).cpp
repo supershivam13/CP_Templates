@@ -17,7 +17,6 @@ class Solution {
 public:
     vector<int> printKClosest(vector<int> a, int n, int k, int x) {
 
-        // vector of integers to store the results
         vector<int> ans;
 
         // making a max heap of pair { absolute difference, element }
@@ -47,8 +46,6 @@ public:
         }
 
         reverse(ans.begin(), ans.end());
-
         return ans;
-
     }
 };
