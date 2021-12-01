@@ -17,7 +17,6 @@ class Solution {
 public:
     vector<int> findClosestElements(vector<int>& a, int k, int x) {
 
-        // vector of integers to store the results
         vector<int> ans;
 
         // making a max heap of pair { absolute difference, element }
@@ -42,7 +41,6 @@ public:
         }
 
         sort(ans.begin(), ans.end());
-
         return ans;
     }
 };
