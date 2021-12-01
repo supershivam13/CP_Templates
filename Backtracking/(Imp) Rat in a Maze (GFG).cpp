@@ -12,7 +12,7 @@ public:
 
     bool isvalid(int x, int y, int n) {
 
-        if (x < 0 or y<0 or x>n - 1 or y > n - 1)
+        if (x < 0 or y < 0 or x > n - 1 or y > n - 1)
             return false;
 
         // if it is already visited or it has obstacle
