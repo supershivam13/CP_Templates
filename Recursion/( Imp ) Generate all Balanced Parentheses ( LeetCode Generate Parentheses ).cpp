@@ -42,12 +42,10 @@ public:
 
     vector<string> generateParenthesis(int n) {
         // Initially, we have 'n' open and 'n' close brackets
-        int open = n;
-        int close = n;
-
-        // initialised output string
+        int open = n, close = n;
+        
         string output = "";
-        // recursive function tog
+        // recursive function call
         balParanthesis(open, close, output);
 
         return ans;
