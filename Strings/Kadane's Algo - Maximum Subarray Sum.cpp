@@ -20,6 +20,7 @@ class Solution {
             
             //If current sum becomes negative at any time, that means we can't include that
             //sub-array in our solution, so we  re-initialise it to 0.
+            // THIS SHOULD BE DONE IN THE LAST, so we get atleast one answer for maximum subarray sum (Case when all numbers in array are negative)
             if(cur_sum<0)
                 cur_sum = 0;
         }
