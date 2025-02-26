@@ -108,11 +108,9 @@ int Solution::solve(vector<int> &a, int x) {
         }
     }
 
-    // calling binary search on [0,peak-1] subarray
-    int ind1 = binary_search(a, 0, (peak - 1 + n) % n, x);
-
-    // calling binary search2 function on [peak,n-1] subarray as it is sorted in descending order
-    int ind2 = binary_search2(a, peak, n - 1, x);
+   
+    int ind1 = binary_search(a, 0, (peak - 1 + n) % n, x);  // calling binary search on [0,peak-1] subarray
+    int ind2 = binary_search2(a, peak, n - 1, x);        // calling binary search2 function on [peak,n-1] subarray as it is sorted in descending order
 
     if (ind1 != -1)
         return ind1;
