@@ -1,5 +1,5 @@
-bool comparator(pair<int, int> a, pair<int, int> b ) {
-
+bool comparator(pair<int, int> a, pair<int, int> b ) {    // sorting the vector in ascending order of end time(JO PEHLE KHATAM HO RHA H USKO LE LO),
+                                                          // if end time are equal, then in ascending order of the start time
     if (a.second == b.second)
         return a.first < b.first;
     
@@ -12,13 +12,13 @@ public:
     {
         vector<pair<int, int>> v;
 
-        for (int i = 0; i < start.size(); i++)
+        for (int i = 0; i < start.size(); i++)  // storing the values as pair [start,end] in vector v
             v.push_back({start[i], end[i]});
 
-        sort(v.begin(), v.end(), comparator);
+        sort(v.begin(), v.end(), comparator);   // sorting the vector v using comparator function
 
-        int take = 1;
-        int last = v[0].second;
+        int take = 1;                // we took the first job
+        int last = v[0].second;       
 
         for (int i = 1; i < v.size(); i++) {
 
