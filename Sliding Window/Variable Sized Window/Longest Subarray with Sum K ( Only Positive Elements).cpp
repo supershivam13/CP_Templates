@@ -2,14 +2,14 @@ class Solution {
 public:
     int lenOfLongSubarr(int nums[],  int N, int k)
     {
-        int i = 0, j = 0, mx = 0, localSum = 0;
+        int i = 0, j = 0, ans = 0, localSum = 0;
 
         while (j < N)
         {
             localSum = localSum + nums[j];
 
             if (localSum == k)
-                mx = max(mx, (j - i + 1));
+                ans = max(ans, (j - i + 1));
 
             else
             {
@@ -18,13 +18,13 @@ public:
                     localSum -= nums[i];
                     i++;
                     if (localSum == k)
-                        mx = max(mx, (j - i + 1));
+                        ans = max(ans, (j - i + 1));
                 }
             }
 
             j++;
         }
 
-        return mx;
+        return ans;
     }
 };
