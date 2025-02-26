@@ -20,13 +20,10 @@ public:
         // MIN HEAP of pair { frequency, element}
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>> > minh;
 
-        // vector of integers to store the results
-        vector<int> ans;
+        vector<int> ans;  // vector of integers to store the results
 
+        unordered_map<int, int> mp;   // map to store the frequency of each element
         int n = a.size();
-
-        // map to store the frequency of each element
-        unordered_map<int, int> mp;
 
         for (int i = 0; i < n; i++)
             mp[a[i]]++;
@@ -50,8 +47,6 @@ public:
         }
 
         reverse(ans.begin(), ans.end());
-
         return ans;
-
     }
 };
