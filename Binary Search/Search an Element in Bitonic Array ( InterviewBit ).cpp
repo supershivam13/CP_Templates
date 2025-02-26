@@ -69,12 +69,9 @@ int binary_search2(vector<int> &nums, int left, int right, int target)
 int Solution::solve(vector<int> &a, int x) {
 
     int n = a.size();
-    int start = 0;
-    int end = n - 1;
-    int mid;
-
-    // variable to store the index of the peak element of the Bitonic Array
-    int peak;
+    int start = 0, end = n -1, mid;
+    
+    int peak;    // variable to store the index of the peak element of the Bitonic Array
 
     // Binary Search to find the index of the peak element of the bitonic array
     while (start <= end) {
