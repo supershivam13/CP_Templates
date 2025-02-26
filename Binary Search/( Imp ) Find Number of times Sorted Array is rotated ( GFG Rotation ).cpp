@@ -25,15 +25,10 @@
 //                   . /
 //                 C  /
 //
-//
-//
-
 
 // IDEA TO SOLVE :-
-
 // Number of time array is rotated is equal to the index of the minimum element.
 // Number of times array is rotated  = Index of minimum element
-
 
 class Solution {
 
@@ -47,8 +42,7 @@ class Solution {
 
         int mid;
 
-        // Binary Search
-        while (left <= right)
+        while (left <= right)  // Binary Search
         {
             mid = left + ((right - left) / 2);
 
@@ -65,7 +59,6 @@ class Solution {
             else
                 left = mid + 1;
         }
-
         return mid;
     }
 
