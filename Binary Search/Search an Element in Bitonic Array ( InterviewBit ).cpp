@@ -84,19 +84,17 @@ int Solution::solve(vector<int> &a, int x) {
         // if mid is any element except the first and the last
         if (mid > 0 and mid < n - 1) {
 
-            // if mid is greater than both of its neighbour
-            if (a[mid] > a[mid + 1] and a[mid] > a[mid - 1]) {
+            if (a[mid] > a[mid + 1] and a[mid] > a[mid - 1]) {      // if mid is greater than both of its neighbour
                 peak = mid;
                 break;
             }
-
-            // move to the more promising halve of array, where there is more chances of finding a peak element
-            // if right neighbour is greater, so it has more chances of being a peak element, so moving right
-            else if (a[mid] < a[mid + 1])
-                start = mid + 1;
+            
+            else if (a[mid] < a[mid + 1])  // move to the more promising halve of array, where there is more chances of finding a peak element
+                start = mid + 1;           // if right neighbour is greater, so it has more chances of being a peak element, so moving right
             else
                 end = mid - 1;
         }
+    
         // if mid is first element of the array, so (mid-1) won't exist in this case
         else if (mid == 0) {
             if (a[0] > a[1])
