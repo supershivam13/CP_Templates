@@ -25,38 +25,26 @@
 //                   . /
 //                 C  /
 //
-
-// IDEA TO SOLVE :-
-// Number of time array is rotated is equal to the index of the minimum element.
-// Number of times array is rotated  = Index of minimum element
-
+// IDEA TO SOLVE :-  1) Number of time array is rotated is equal to the index of the minimum element
+//                   2) The minimum element index will be the right adjacent to the maximum(pivot) element index.
 class Solution {
-
-    // Function to return the index of the maximum(pivot) element
-    int find_pivot(int nums[], int left, int right)
+    int find_pivot(int nums[], int left, int right)    // Function to return the index of the maximum(pivot) element
     {
-        // if the array on which function is called is strictly increasing
-        // (it don't has the BC part of the graph )
-        if (nums[left] < nums[right])
+        if (nums[left] < nums[right])  // if the array on which function is called is strictly increasing, i.e. it don't has the BC part
             return right;
 
         int mid;
-
-        while (left <= right)  // Binary Search
+        while (left <= right)  // BINARY SEARCH
         {
             mid = left + ((right - left) / 2);
 
-            // both the parts of graph are stricly increasing, so if next element is smaller than the current
-            // element, it can occur only at place B
-            if (nums[mid] > nums[mid + 1])
-                return mid;
+            if (nums[mid] > nums[mid + 1])    // both the parts of graph are stricly increasing, so if next element is smaller than the current
+                return mid;                   // element, it can occur only at place B
 
-            // when mid falls in the CD part of the graph
-            else if (nums[mid] < nums[0])
+            else if (nums[mid] < nums[0])     // when mid falls in the CD part of the graph
                 right = mid - 1;
-
-            // else mid is in the AB part, so changing left = mid + 1
-            else
+                
+            else                              // else mid is in the AB part, so changing left = mid + 1
                 left = mid + 1;
         }
         return mid;
