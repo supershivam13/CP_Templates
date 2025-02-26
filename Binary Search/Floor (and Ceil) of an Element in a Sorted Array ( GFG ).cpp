@@ -1,5 +1,4 @@
 // BINARY SEARCH
-
 // Identification -
 // Whenever 'sorted' word is used, always think of Binary Search {i.e whenever sorted data is given, we might can
 // improve the complexity using binary search }
@@ -9,7 +8,6 @@
 // ceil element of the target and 'end' index points to the floor value of the target.
 
 // *************************************************************************************************************
-
 
 class Solution {
 public:
@@ -39,7 +37,6 @@ public:
                 start = mid + 1;
             }
         }
-
         return res;
 
         // Similarily, Ceil of an element can also be found with minor changes.
