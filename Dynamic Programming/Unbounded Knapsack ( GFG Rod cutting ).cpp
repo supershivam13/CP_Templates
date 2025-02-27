@@ -14,13 +14,10 @@ public:
         int dp[n + 1][n + 1];
 
         // Initialising the dp array
-        for (int i = 0; i <= n; i++) {
-            for (int j = 0; j <= n; j++) {
+        for (int i = 0; i <= n; i++)
+            for (int j = 0; j <= n; j++)
                 if (i == 0 or j == 0)
                     dp[i][j] = 0;
-            }
-        }
-
 
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
