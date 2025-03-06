@@ -3,6 +3,7 @@
 // we will try to find out the target like
 // target = nums[i] + some previous value (stored in the map with their indices)
 // where, some previous value = target - nums[i];
+
 // Use find function (logN time) in the map to find this key
 // if(mp.find(target-nums[i]) != mp.end())
 // than just simply return this indices which are stored in map
@@ -21,7 +22,7 @@ public:
             if (mp.find(target - nums[i]) != mp.end())
                 return {mp[target - nums[i]], i};
 
-            mp[nums[i]] = i;
+            mp[nums[i]] = i;   // map is created after checking to avoid usage of same index twice
         }
 
         return {};
