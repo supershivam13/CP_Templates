@@ -77,27 +77,21 @@ const int lim   = 1000006;    // lim = 10^6 + 6
 #define asum(a,n)       accumulate(a,a+n,(ll)0)
 #define rev(v)          reverse(v.begin(),v.end());
 
-
 // LONGEST INCREASING SUBSEQUENCE WITH PRINTING
 
 // TIME COMPLEXITY - O( N^2 )
 // SPACE COMPLEXITY - O( N )
 
 
-int a[1001];
+int a[1001];=
 
-
-// LIS() returns the vector containing LIS of the array a[] of size n
-vector<int> LIS(int n)
+vector<int> LIS(int n)  // LIS() returns the vector containing LIS of the array a[] of size n
 {
-    // LIS array to store the length LIS found till now
-    int lis[n];
+    
+    int lis[n];  // LIS array to store the length LIS found till now
 
-    // Initialising the LIS array with as each element is a LIS in itself
-    f(i, n)
+    f(i, n)      // Initialising the LIS array with as each element is a LIS in itself
     lis[i] = 1;
-
-    // Compute optimized LIS values in bottom up manner
 
     // first loop covers all the elements of the array
     for (int i = 1; i < n; i++) {
@@ -109,17 +103,12 @@ vector<int> LIS(int n)
                 lis[i] = lis[j] + 1;
     }
 
-    // Getting the maximum value of LIS from the lis array ( FINAL RESULT )
-    int max_lis = *max_element(lis, lis + n);
+    int max_lis = *max_element(lis, lis + n);  // Getting the maximum value of LIS from the lis array ( FINAL RESULT )
+// --------------------------------------------------------------------------------------------------------- //
+    
+    int lis_ind = 0;   // NOW,PRINTING ONE OF THE (ONE OR MANY POSSIBLE) SUCH LIS
 
-
-
-    // NOW,PRINTING ONE OF THE (ONE OR MANY POSSIBLE) SUCH LIS
-
-    int lis_ind = 0;
-
-    // Finding the index at which LIS length occurs
-    for (int i = n - 1; i >= 0; i--) {
+    for (int i = n - 1; i >= 0; i--) {    // Finding the index at which LIS length occurs
         if (lis[i] == max_lis ) {
             lis_ind = i;
             break;
@@ -127,11 +116,9 @@ vector<int> LIS(int n)
     }
 
     vector<int> result;
+    result.pb(a[lis_ind]);   // pushing the element at the index where the LIS is obtained
 
-    // pushing the element at the index where the LIS is obtained
-    result.pb(a[lis_ind]);
-
-    for (int i = lis_ind - 1; i >= 0; i--) {
+    for (int i = lis_ind - 1; i >= 0; i--) {  // starting from index 1 less than 'lis_index' upto the zero
 
         // checking the index where 1 length shorter LIS value is found and if a[i]<a[lis_ind],
         // and updating the value of lis_ind to index where 1 length shorter LIS value is found
@@ -144,7 +131,6 @@ vector<int> LIS(int n)
     reverse(all(result));
 
     return result;
-
 }
 
 void c_p_c()
