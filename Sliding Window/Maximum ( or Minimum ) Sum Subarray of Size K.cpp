@@ -129,15 +129,10 @@ int32_t main()
     cin >> a[i];
 
 
+    int sum = accumulate(a, a + k, 0);   // getting the sum of the elements of first window of size k
 
-    // getting the sum of the elements of first window of size k
-    int sum = accumulate(a, a + k, 0);
-
-    // variable to store the minimum subarray sum of size k
-    int ans_min = INT_MAX;
-
-    // variable to store the maximum subarray sum of size k
-    int ans_max = 0;
+    int ans_min = INT_MAX;        // variable to store the minimum subarray sum of size k
+    int ans_max = INT_MIN;        // variable to store the maximum subarray sum of size k
 
     // SLIDING WINDOW TECHNIQUE
     for (int i = 0; i <= n - k; i++) {
@@ -147,6 +142,7 @@ int32_t main()
             ans_min = min(ans_min, sum);
             ans_max = max(ans_max, sum);
         }
+            
         // for subsequent windows of size k ( except the first window )
         else {
             
@@ -161,5 +157,4 @@ int32_t main()
 
     cout << "Minimum Sum of a Subarray : " << ans_min << endl;
     cout << "Maximum Sum of a Subarray : " << ans_max << endl;
-
 }
