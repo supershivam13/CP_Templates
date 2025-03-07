@@ -13,16 +13,16 @@ public:
 
         while (j < N)
         {
-            localSum = localSum + nums[j];
+            localSum = localSum + nums[j];        // adding alculations of j
 
-            if (localSum == k)
+            if (localSum == k)                    // if condition is met
                 ans = max(ans, (j - i + 1));
 
             else
             {
                 while (localSum > k)
                 {
-                    localSum -= nums[i];
+                    localSum -= nums[i];           // removing calculations of i
                     i++;
                     if (localSum == k)
                         ans = max(ans, (j - i + 1));
