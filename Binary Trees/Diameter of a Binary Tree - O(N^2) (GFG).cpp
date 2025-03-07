@@ -1,27 +1,31 @@
 // Time Complexity - O( N^2 )
+// BRUTE FORCE APPROACH
+
 
 class Solution {
-public:
-
-    int height(Node* root) {
-
-        if (root == NULL)
-            return 0;
-
-        return 1 + max(height(root->left), height(root->right));
-    }
-
-    // Solution starts here
-    int diameter(Node* root) {    // Function to return the diameter of a Binary Tree.
-
-        if (root == NULL)
-            return 0;
-
+  public:
+  
+    int height(Node* root){    // Normal Height of a Binary Tree function
         
-        int d1 = height(root->left) + height(root->right) + 1 ;   // when diameter passes through root
-        int d2 = diameter(root->left);                            // when diameter lies in the left subtreee
-        int d3 = diameter(root->right);                           // when diameter lies in the left subtreee
-
-        return max(d1, max(d2, d3));
+        if(root==NULL)
+            return 0;
+            
+        int left = height(root->left);
+        int right = height(root->right);
+        
+        return 1 + max(left,right);
+    }
+    
+    // DIAMETER = Number of EDGES (not nodes) on the longest path between two leaf nodes
+    int diameter(Node* root) {
+        
+        if(root==NULL)
+            return 0;
+        
+        int d1 = height(root->left) + height(root->right);   // If asked as Diameter = Number of nodes, then add 1 to 'd1'.
+        int d2 = diameter(root->left);
+        int d3 = diameter(root->right);
+        
+        return max( d1, max(d2,d3) );
     }
 };
