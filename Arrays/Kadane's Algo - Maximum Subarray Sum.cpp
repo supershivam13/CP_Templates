@@ -7,10 +7,9 @@ class Solution {
   public:
     int maxSubarraySum(vector<int> &arr) {
         
-        int ans = INT_MIN;
+        int ans = INT_MIN;    // should be initialised with INT_MIN, not zero as negative numbers are there
         
-        //initialise current sum as zero
-        int cur_sum = 0;
+        int cur_sum = 0;     //initialise current sum as zero
         
         for (int i=0;i<arr.size();i++){
             
