@@ -7,9 +7,9 @@ class Solution {
         
         if(node==NULL)
             return;
-         
-         mirror(node->left);
-         mirror(node->right);
-         swap(node->left,node->right);    
+
+         swap(node->left,node->right);   // swap the right and left
+         mirror(node->left);            // invert the left subtree
+         mirror(node->right);           // invert the right subtree
     }
 };
