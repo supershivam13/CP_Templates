@@ -23,10 +23,9 @@ public:
         stack<long long> s;
         vector<long long> v;
 
-        // traversing the array from end to start
-        for (int i = n - 1; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {    // traversing the array from end to start
 
-            // if no elements in stack, then ans is -1
+            // if no elements in stack, then ans is -1  (given in question, if no NGE, then -1)
             if (s.size() == 0)
                 v.push_back(-1);
 
@@ -47,14 +46,12 @@ public:
                     v.push_back(s.top());
             }
             
-            // inserting the element in the stack after its processing for NGE is done
-            s.push(a[i]);
+            s.push(a[i]);   // inserting the element in the stack after its processing for NGE is done
         }
 
         // reversing the result vector
         reverse(v.begin(), v.end());
 
         return v;
-
     }
 };
