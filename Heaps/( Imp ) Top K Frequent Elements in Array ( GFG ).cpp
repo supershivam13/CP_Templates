@@ -22,7 +22,7 @@ public:
 
         vector<int> ans;  // vector of integers to store the results
 
-        unordered_map<int, int> mp;   // map to store the frequency of each element
+        unordered_map<int, int> mp;   // map to store the frequency of each element {element : frequency}
         int n = a.size();
 
         for (int i = 0; i < n; i++)
