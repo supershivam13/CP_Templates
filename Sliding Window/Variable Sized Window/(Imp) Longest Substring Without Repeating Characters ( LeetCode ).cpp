@@ -9,8 +9,7 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
 
-        int n = s.length();
-        int i = 0, j = 0, ans = 0;
+        int n = s.length(), i = 0, j = 0, ans = 0;
 
         // map to store the count of characters in the current window
         // and map.size() gives the number of unique characters
