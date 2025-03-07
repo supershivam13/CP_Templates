@@ -1,3 +1,7 @@
+// IMPORTANT
+// Here, Sliding Window approach does not work for negative numbers because it assumes that removing elements from the left
+// will always reduce the sum, which is not true when negative numbers are present.
+
 // CONCEPT
 // If a prefixsum 'x' is repeated again, it means that the  sum of subarray in between is 0
 // because x + 0 = x
