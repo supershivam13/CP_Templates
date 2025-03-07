@@ -31,9 +31,8 @@ public:
 
             mp[s[j]]++;                    // adding calculations of j
 
-            // when there is less than k unique characters in the window, simply carry on
-            if (mp.size() < k)    
-                continue;
+            // when there is less than k unique characters in the window, do nothing
+            if (mp.size() < k){}
 
             // when there is k unique characters in the window, then it can be a candidate, so updating the ans
             else if (mp.size() == k)             // if condition is met
