@@ -6,6 +6,7 @@ public:
             return 0;
 
         int ans = 1;
+        
         unordered_set<int> record;
         for (int x : num)
             record.insert(x);
@@ -18,8 +19,8 @@ public:
             record.erase(x);
             int prev = x - 1, next = x + 1;
 
-            while (record.find(prev) != record.end())
-                record.erase(prev--);
+            while (record.find(prev) != record.end())       //O(n)
+                record.erase(prev--);                       //O(n) 
             while (record.find(next) != record.end())
                 record.erase(next++);
 
