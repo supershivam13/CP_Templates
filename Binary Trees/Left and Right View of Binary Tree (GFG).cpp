@@ -2,43 +2,44 @@
 
 // Time Complexity - O(N) { instead of two nested while loops, the complexity is O(N) }
 
-vector<int> leftView(Node *root)
-{
-    vector<int> ans;
-    queue<Node*> q;
+class Solution {
+  public:
+    vector<int> leftView(Node *root){
+        
+        vector<int> ans;
+        queue<Node*> q;
 
-    if (root == NULL)
-        return ans;
+        if (root == NULL)
+            return ans;
 
-    q.push(root);
+        q.push(root);           
 
-    // Run till the queue gets empty
-    while (!q.empty()) {
+        while (!q.empty()) {    // Run till the queue gets empty
 
-        // size will be equal to the nodes in that level of the tree
-        int size = q.size();
+            int size = q.size(); //  Snippet - (1) size will be equal to the nodes in that level of the tree, and declare a temp pointer
+            Node* temp;
 
-        // storing the first element of each level of tree
-        ans.push_back(q.front()->data);
+            ans.push_back(q.front()->data); //  Snippet - (2)storing the first element of each level of tree
 
-        // processing the nodes level-wise
-        while (size--) {
-            Node* temp = q.front();
-            q.pop();
+            // processing the nodes level-wise
+            while (size--) {                // Snippet -  (3) While loop
+                temp = q.front();
+                q.pop();
 
-            if (temp->left)
-                q.push(temp->left);
-            if (temp->right)
-                q.push(temp->right);
+                if (temp->left)
+                    q.push(temp->left);
+                if (temp->right)
+                    q.push(temp->right);
+            }
         }
-    }
 
     return ans;
-}
+    }
+};
 
 
 
-// 2) RIGHT VIEW 
+// 2) RIGHT VIEW  ( only swap positions of Snippet (2) and (3) in Leftview to get Rightview)
 
 // Time Complexity - O(N) { instead of two nested while loops, the complexity is O(N) }
 
@@ -54,15 +55,14 @@ public:
 
         q.push(root);
 
-        // Run till the queue gets empty
-        while (!q.empty()) {
+        while (!q.empty()) {         // Run till the queue gets empty
 
-            // size will be equal to the nodes in that level of the tree
-            int size = q.size();
+            int size = q.size();   // Snippet - (1) size will be equal to the nodes in that level of the tree, and declare a temp pointer
             Node* temp;
+            
 
             // processing the nodes level-wise
-            while (size--) {
+            while (size--) {            // Snippet - (2) while loop
                 temp = q.front();
                 q.pop();
 
@@ -74,7 +74,7 @@ public:
 
             // address of last element of each level will be remain stored in the 'temp' pointer
             // so, storing the last element of each level of tree
-            ans.push_back(temp->data);
+            ans.push_back(temp->data);        // Snippet - (3) storing the first element of each level of tree
         }
 
         return ans;
