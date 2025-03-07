@@ -22,12 +22,10 @@ class Solution
 public:
     vector <int> calculateSpan(int a[], int n)
     {
-        // vector to return and store the final result
-        vector<int> v;
-        // stack to store pairs { element , index}
-        stack < pair<int, int> > s;
+        vector<int> v;                // vector to return and store the final result
+        stack < pair<int, int> > s;   // stack to store pairs { element , index}
 
-        // Finding Nearest Greater to Left
+        // This Question boils down to Finding Nearest Greater to Left
         for (int i = 0; i < n; i++) {
 
             if (s.size() == 0)
@@ -48,8 +46,8 @@ public:
                 else
                     v.push_back(s.top().second);
             }
-            // pushing the { elemennt, index } into the stack after its processing is done
-            s.push({a[i], i});
+
+            s.push({a[i], i}); // pushing the { elemennt, index } into the stack after its processing is done
         }
 
         // v[i] stores the index of the NGL element for a[i], if does not exist then -1
