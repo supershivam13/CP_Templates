@@ -7,27 +7,23 @@
 class Solution {
 public:
 
-    bool isBST(Node* root, int low, int high) {
+    bool isBST(TreeNode* root, long long low, long long high){
 
-        if (root == NULL)
+        if(root==NULL)
             return true;
-
-        if (root->data <= low or root->data >= high )
+        
+        if(root->val<= low || root->val >= high)  // Every left node is STRICTLY SMALLER than Root and Every right node is STRICTLY GREATER than Root in BST
             return false;
-
-        // recursive call on left subtree with upper bound as root->data
-        bool left = isBST(root->left, low, root->data);
-
-        // recursive call on right subtree with lower bound as root->data
-        bool right = isBST(root->right, root->data, high);
+        
+        bool left = isBST(root->left, low, root->val);        // recursive call on left subtree with upper bound as root->data
+        bool right = isBST(root->right,root->val, high);      // recursive call on right subtree with lower bound as root->data
 
         return (left and right);
     }
 
-    // Solution starts here
-    //Function to check whether a Binary Tree is BST or not.
-    bool isBST(Node* root) {
+    // SOLUTION starts here
+    bool isValidBST(TreeNode* root) {
 
-        return isBST(root, INT_MIN, INT_MAX);
+        return isBST(root, LONG_MIN, LONG_MAX);           // Function to check whether a Binary Tree is BST or not.
     }
 };
