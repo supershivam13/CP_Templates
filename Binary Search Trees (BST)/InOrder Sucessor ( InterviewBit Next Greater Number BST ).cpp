@@ -23,37 +23,31 @@ TreeNode* Solution::getSuccessor(TreeNode* root, int k) {
         }
     }
 
-    // Now finding the Inorder Successor
+    // Now finding the INORDER SUCCESSOR
+    
+    if (target->right != NULL) {  // When right subtree of 'target' node exists, then the left most node in the right subtree of target is the InOrder Successor.
 
-    // When right subtree of 'target' node exists,
-    // then the left most node in the right subtree of target is the InOrder Successor.
-    if (target->right != NULL) {
+        TreeNode* temp = target->right;   // entered the right subtree of target
 
-        TreeNode* temp = target->right;
-
-        while (temp->left) {
+        while (temp->left != NULL)       // keep going to the left most node
             temp = temp->left;
-        }
 
         return temp;
     }
-
-    // Else start from root and traverse to the 'target node', and keep storing the nodes which are greater
-    // than the target node (at last, node which is least greater than target is the InOrder Successor)
-    else {
-
+    else {                                // right subtree of 'target' node DOES NOT exists, Else start from root and traverse to the 'target node', 
+                                          // and keep storing the nodes which are greater than the 'target' node 
         TreeNode* succ = NULL;
         TreeNode* temp = root;
 
         while (temp != NULL) {
 
-            if (temp->val > k) {
-                succ = temp;
+            if (temp->val > k) {        
+                succ = temp;               // storing the potential InOrder Successor
                 temp = temp->left;
             }
-            else if (temp->val < k)
+            else if (temp->val < k)        
                 temp = temp->right;
-            else
+            else                            // target node is reached
                 break;
         }
 
