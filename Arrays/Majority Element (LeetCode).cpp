@@ -9,13 +9,13 @@ public:
     int majorityElement(vector<int>& nums) {
 
         int n = nums.size();
-        map<int, int> m;
+        map<int, int> m;    // { element : frequency }
 
-        for (int x : nums)
+        for (auto x : nums)
             m[x]++;
 
-        for (auto p : m)
-            if (p.second > n / 2)
+        for (auto p : m)    
+            if (p.second > n / 2)    // if any frequency > n/2, then return that element
                 return p.first;
 
         return -1;
