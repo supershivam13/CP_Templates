@@ -1,8 +1,8 @@
 // Idea to Solve -
 
 // In BST,
-// Every node of the Left Subtree is smaller than Root(upper bound) and larger than INT_MIN(lower bound) &
-// Every node of the Right Subtree is greater than Root(lower bound) and smaller than INT_MAX(upper bound).
+// Every node of the Left Subtree is strictly smaller than Root(upper bound) and larger than INT_MIN(lower bound) &
+// Every node of the Right Subtree is strictly greater than Root(lower bound) and smaller than INT_MAX(upper bound).
 
 class Solution {
 public:
