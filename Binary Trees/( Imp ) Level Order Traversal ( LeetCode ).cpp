@@ -2,34 +2,30 @@ class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
 
-        vector<vector<int>> ans;
+        vector<vector<int>> ans;    // to return the vector of levels (final answer)
+        vector<int> level;          // to store the levels of the tree
 
-        // to store the levels of the tree
-        vector<int> level;
+        queue<TreeNode*> q;     // Queue used in BFS ( Level Order Traversal == BFS )
 
-        // Queue used in BFS ( Level Order Traversal == BFS )
-        queue<TreeNode*> q;
-
-        if (root == NULL)
+        if (root == NULL)    // Base Condition
             return ans;
 
         q.push(root);
 
-        // NULL pointer indicates the end of a level of the Binary Tree
-        q.push(NULL);
+        q.push(NULL);   // NULL pointer indicates the end of a level of the Binary Tree
 
-        while (!q.empty()) {
+        
+        while (q.size()>0) {
 
             TreeNode* curr = q.front();
             q.pop();
 
-            // this means we have reached the end of a level of the tree, so storing the 'level' vector
-            if (curr == NULL) {
+            if (curr == NULL) {    // this means we have reached the end of a level of the tree, so storing the 'level' vector
                 ans.push_back(level);
                 level.clear();
 
-                // To avoid Infinite loop, only push NULL when there are some elements left in queue
-                if (!q.empty())
+                // Put NULL back again as soon we get NULL, but only when there is some elements left in queue (to avoid Infinite loop)
+                if (q.size()>0)
                     q.push(NULL);
             }
             else {
