@@ -37,7 +37,6 @@ public:
                     q.push(curr->right);
             }
         }
-
         return ans;
     }
 };
