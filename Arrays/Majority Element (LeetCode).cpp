@@ -26,7 +26,7 @@ public:
 // ***************************************************************
 
 
-// Method - 2  (Space Optimised)
+// Method - 2  (Space Optimised) - Moore's Algorithm
 
 // Time - O(N)
 // Space - O(1)
@@ -43,8 +43,7 @@ public:
 
         int n = nums.size();
 
-        // Assumed majority element
-        int maj = nums[0];
+        int maj = nums[0];    // Assumed majority element
         int count = 1;
 
         for (int i = 1; i < n; i++) {
@@ -59,16 +58,7 @@ public:
                 count = 1;
             }
         }
-
-        // Now check whether our Assumed Majority Element is correct or not
-        int check = 0;
-        for (int i = 0; i < n; i++)
-            if (maj == nums[i])
-                check++;
-
-        if (check > n / 2)
-            return maj;
-        else
-            return -1;
-    }
+        
+        return maj;
+   }
 };
