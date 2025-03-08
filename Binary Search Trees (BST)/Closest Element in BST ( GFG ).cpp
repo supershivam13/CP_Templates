@@ -1,9 +1,9 @@
 class Solution {
 public:
     int minDiff(Node *root, int k) {
-        // to store the closest element to k
-        int closest;
-        int diff = INT_MAX;
+       
+        int closest;          // to store the closest element to K
+        int diff = INT_MAX;   // to store the minimum absolute difference
         Node* temp = root;
 
         // Traversing the BST from root to leaf
@@ -11,22 +11,22 @@ public:
 
             int cur_diff = abs(temp->data - k);
 
-            // we have to return minimim absolute difference, so directly returning 0 here
-            if (cur_diff == 0)
+            if (cur_diff == 0)    // we have to return minimim absolute difference, so directly returning 0 here
                 return 0;
 
-            // updating the closest and diff
+            // Updating the 'closest' and 'diff'
             if (cur_diff < diff) {
                 diff = cur_diff;
                 closest = temp->data;
             }
 
-            // left or right
+            // Now traverse to either Left subtree or Right subtree
             if (temp->data > k)
-                temp = temp->left;
+                temp = temp->left;        // K may lie in the left sub-tree
             else
-                temp = temp->right;
+                temp = temp->right;       // K may lie in the right sub-tree
         }
+        
         return diff;
     }
 };
