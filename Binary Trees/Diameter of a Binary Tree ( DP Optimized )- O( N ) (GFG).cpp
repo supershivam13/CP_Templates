@@ -4,26 +4,25 @@
 class Solution {
 public:
 
-    pair<int, int> OptimisedDiameter(Node *root) {
+    pair<int,int> OptimisedDiameter(Node *root) {
+        
+        pair<int,int> p, left, right;      // pair of {diameter, height}
 
-        // pair of {diameter, height}
-        pair<int, int> p;
-
-        // Base Condition
-        if (root == NULL) {
+        if (root == NULL) {    // Base Condition
             p.first = 0;
             p.second = 0;
             return p;
         }
 
-        pair<int, int> left = OptimisedDiameter(root->left);
-        pair<int, int> right = OptimisedDiameter(root->right);
+        left = OptimisedDiameter(root->left);
+        right = OptimisedDiameter(root->right);
 
-        // Now calculating the heigth and diamter of the parent node using the results of recursive calls on childs.
+        // Now calculating the heigth(p.second) and diamter(d.first) of the parent node
+        // using the results of recursive calls on childs.
 
         p.second = max(left.second, right.second) + 1;
 
-        int d1 = left.second + right.second + 1;
+        int d1 = left.second + right.second; // If asked as Diameter = Number of nodes, then add 1 to 'd1'.
         int d2 = left.first;
         int d3 = right.first;
 
@@ -32,13 +31,8 @@ public:
         return p;
     }
 
-    // Solution Starts here
-    // Function to return the diameter of a Binary Tree.
+    // SOLUTIOIN Starts here
     int diameter(Node* root) {
-
-        if (root == NULL)
-            return 0;
-
         return OptimisedDiameter(root).first;
     }
 };
