@@ -29,7 +29,7 @@ public:
                     q.push(NULL);
             }
             else {
-                level.push_back(curr->val);
+                level.push_back(curr->val);    // Node Processed, then push the left child and right child into Queue
 
                 if (curr->left != NULL)
                     q.push(curr->left);
