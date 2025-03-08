@@ -1,3 +1,10 @@
+// OPTIMIZATION in terms of Space
+// Instead of using a separate 'visited' array, we can use the grid to keep track of the visited cells
+// by changing the values to '-1' and putting it back as '1' while backtracking
+// and in the isValid function, we check if (grid[x][y]== -1), then return.
+
+
+
 //In matrix or 2D Grid, x-axis is vertcal and y-axis is horizontal (opposite as of Coordinate Geometry)
 // Up , Right, Down , Left
 int dx[] = { -1, 0, 1, 0};
