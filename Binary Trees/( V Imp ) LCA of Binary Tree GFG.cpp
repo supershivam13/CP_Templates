@@ -16,9 +16,9 @@ public:
         // calling recursively on left and right subtree
         Node* left = lca(root->left, n1, n2);
         Node* right = lca(root->right, n1, n2);
-
-        // if both of its child are not NULL, then it means it is LCA, so return root
-        if (left != NULL and right != NULL)
+    
+        // if both of its child_LCA are not NULL, then it means root is LCA
+        if (left != NULL and right != NULL)  // Case when n1 and n2 lies in separate subtrees
             return root;
 
         // OTHERWISE return 'left' or 'right' whichever is not NULL
