@@ -28,5 +28,4 @@ public:
         else
             return r;
     }
-
 };
