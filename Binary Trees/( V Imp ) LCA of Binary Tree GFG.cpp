@@ -1,13 +1,11 @@
 // Time Complexity - O(N)
 // Space Complexity - O(Height of Tree)
 
-
 class Solution {
 public:
     Node* lca(Node* root , int n1 , int n2 )
     {
-        // Base Condition
-        if (root == NULL)
+        if (root == NULL)    // Base Condition
             return NULL;
 
         // if root is either of one node we are looking, return root
@@ -16,16 +14,16 @@ public:
             return root;
 
         // calling recursively on left and right subtree
-        Node* l = lca(root->left, n1, n2);
-        Node* r = lca(root->right, n1, n2);
+        Node* left = lca(root->left, n1, n2);
+        Node* right = lca(root->right, n1, n2);
 
-        // if both of its child are not null, then it means it is LCA, so return root
-        if (l != NULL and r != NULL)
+        // if both of its child are not NULL, then it means it is LCA, so return root
+        if (left != NULL and right != NULL)
             return root;
 
-        // OTHERWISE return 'l' or 'r' whichever is not NULL
-        // ( if both l and r are NULL, then 'r' is returned which is NULL )
-        if (l != NULL)
+        // OTHERWISE return 'left' or 'right' whichever is not NULL
+        // ( if both left and right are NULL, then 'right' is returned which is NULL anyways )
+        if (left != NULL)
             return l;
         else
             return r;
