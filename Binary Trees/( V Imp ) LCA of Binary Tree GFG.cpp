@@ -24,8 +24,8 @@ public:
         // OTHERWISE return 'left' or 'right' whichever is not NULL
         // ( if both left and right are NULL, then 'right' is returned which is NULL anyways )
         if (left != NULL)
-            return l;
+            return left;
         else
-            return r;
+            return right;
     }
 };
