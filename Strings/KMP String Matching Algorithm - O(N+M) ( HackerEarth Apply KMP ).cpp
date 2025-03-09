@@ -108,26 +108,19 @@ int32_t main()
 {
     string text, pattern;
     cin >> pattern >> text;
-    int t = text.length();
-    int p = pattern.length();
 
-    // string s = pattern + "#" + text
-    string s = pattern;
-    // adding a character which will never occur in text neither pattern
-    s.push_back('#');
-    s += text;
+    // string 's' = 'pattern' + "#" + 'text'
+    string s = pattern + '#' + text;        // adding a character '#' in between which will never occur in both strings
 
     int kmp_length = s.length();
+    int ans = 0;        // return the total number of occurences of 'pattern' in 'text'
 
-    // length of longest proper prefix array ( initialised with zero )
-    int lps[kmp_length];
-    f(i, kmp_length)
-    lps[i] = 0;
-    int ans = 0;
+    vector<int> lps(kmp_length, 0); // LPS array, initialised with zero
 
     // Main LPS ( Length of Longest Proper Prefix Function )
-    fo(i, 1, kmp_length - 1) {
-
+    // LPS[0] is always 0, so we start from 1
+    for(int i =  1; i < kmp_length; i++) {
+        
         int j = lps[i - 1];
 
         while (j > 0 and s[i] != s[j])
@@ -142,8 +135,8 @@ int32_t main()
     // in the lps array, the places where there lps[i] == length of the pattern, it confirms that there is a occurence
     // of pattern at that place, and lps[i] can never be greater than the length of pattern because we have added a
     // character ( # here ) which will never occur in the text string
-    f(i, kmp_length)
-        if (lps[i] == p)
+    for(int i = 0; i<kmp_length; i++)
+        if (lps[i] == pattern.length())
             ans++;
 
     cout << ans << endl;
