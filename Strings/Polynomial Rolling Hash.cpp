@@ -7,20 +7,29 @@
 using namespace std;
 
 
+// p(31) is a prime number that reduces collisions.
+
+// Example Calculation 
+// For "abc": 'a' = 1, 'b' = 2, 'c' = 3 
+// Hash = ( 1 × 31^0 ) + ( 2 × 31^1 ) + ( 3 × 31^2 ) mod(10^9 +7) 
+//      = ( 1×31^0 )+( 2×31^1 )+( 3×31^2 )mod(10^9 +7)
+//      = 1 + 62 + 2883 
+//      = 1 + 62 + 2883 
+//      = 2946
+
 lli getHash(string key)
 {
-    lli value = 0;
+    lli ans = 0;
 
-    // p should be >= |char set|
-    lli p = 31;
+    // p should be >= |char set| ( p >= 26 )
+    lli p = 31;  //p(31) is a prime number that reduces collisions.
 
-    // as initially, p^0 = 1
-    lli p_power = 1;
+    lli p_power = 1;   // as initially, p^0 = 1
 
     for (char ch : key)
     {
         // a = 1, b = 2, c = 3, etc.
-        value = (value + (ch - 'a' + 1) * p_power) % mod;
+        ans += (ch - 'a' + 1) * p_power) % mod;
         p_power = (p_power * p) % mod;
     }
 
