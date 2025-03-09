@@ -12,7 +12,8 @@ public:
         }
         
         // THIS PROBLEM IS SAME AS COUNT THE NUMBER OF SUBSETS WITH A GIVEN SUM, 
-        // WHERE GIVEN SUM = (ARRAY_SUM + TARGET)/2     (target which is given in question)
+        // WHERE GIVEN SUM = (ARRAY_SUM + TARGET)/2     (TARGET which is given in question)
+        // TARGET given in question is actually differnce of S1(+) and S2(-)
         
         // S1 + S2 = ARRAY_SUM
         // S1 - S2 = TARGET         (S1 has all '+' and S2 has all '-' )
