@@ -46,7 +46,7 @@ int main()
 
 
     // Run the loop till all the nodes have been visited
-    while (!pq.empty())
+    while (pq.empty()>0)
     {
         int u = pq.top().second;
         int weigh = pq.top().first;
