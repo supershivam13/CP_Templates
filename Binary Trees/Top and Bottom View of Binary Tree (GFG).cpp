@@ -18,21 +18,21 @@ public:
         vector<int> ans;
 
         // map of {x-cordinate, value} to store the only first occurence at each new value of x
-        map<int, int> m;
+        map<int, int> m;        // { x-cordinate : value}
 
         // Perform Level Order traversal
-        queue<pair<Node*, int>> q;
+        queue<pair<Node*, int>> q;        // { Node*, x-cordinate }
         q.push({root, 0});
 
-        while (!q.empty()) {
+        while (q.size()>0) {
 
             Node* temp = q.front().first;
             int x = q.front().second;
             q.pop();
 
-            // only store the first occurence of 'x' along with its value as {value,x}
-            if (m.find(x) == m.end())
-                m[x] = temp->data;
+            // only store the first occurence of 'x' along with its value as {x,value}, rest not required
+            if (m.find(x) == m.end())  // BOTTOM VIEW  = Just Remove this 'if' statement, rest all same as Top View
+                m[x] = temp->data;        
 
             if (temp->left)
                 q.push({temp->left, x - 1});
@@ -40,7 +40,7 @@ public:
                 q.push({temp->right, x + 1});
         }
 
-        for (auto p : m)
+        for (auto p : m)            // map has all values as { x-cordinate : value}
             ans.push_back(p.second);
 
         return ans;
