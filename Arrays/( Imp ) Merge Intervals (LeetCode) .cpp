@@ -1,44 +1,20 @@
 class Solution {
 public:
-    vector<vector<int>> merge(vector<vector<int>>& a) {
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
 
-        vector<vector<int>> ans;
+        sort(intervals.begin(), intervals.end());       // sort the intervals
 
-        // n stores the size of the actual given vector
-        int n = a.size();
-        int i = 0, j;
+        vector<vector<int>> ans;        // to store the answer
 
-        // inserting a {INT_MAX,INT_MAX} vector for ease
-        vector<int> last(2, INT_MAX);
-        a.push_back(last);
-        sort(a.begin(), a.end());
+        for(auto pair: intervals){
 
-        // since a.size() is increased by 1 after inserting, so can access upto index n
-        while (i + 1 <= n) {
-
-            // simply inserting all the non-overlapping intervals
-            while (i + 1 <= n and a[i][1] < a[i + 1][0]) {
-                ans.push_back(a[i]);
-                i++;
+            if(ans.size()==0 || ans.back()[1] < pair[0]){  // if empty OR non-overlapping intervals
+                ans.push_back(pair);
             }
-
-            // case of merging of two or more intervals
-            while (i + 1 <= n and a[i][1] >= a[i + 1][0]) {
-
-                j = i + 1;
-
-                // determining the lower and upper bound of the final merged interval
-                while (j<n and a[i][1] >= a[j][0]) {
-                    a[i][0] = min(a[i][0], a[j][0]);
-                    a[i][1] = max(a[i][1], a[j][1]);
-                    j++;
-                }
-
-                ans.push_back(a[i]);
-                i = j;
+            else{
+                ans.back()[1] = max(ans.back()[1], pair[1]); // overlapping intervals, so taking bigger end of intervals
             }
         }
-
         return ans;
     }
 };
