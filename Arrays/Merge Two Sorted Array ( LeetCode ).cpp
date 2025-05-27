@@ -2,23 +2,26 @@ class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         
-        int f=m-1;
-        int s=n-1;
-        int ind=m+n-1;
+        int first = m-1, second = n-1;
+        int ind = m+n-1;
         
-        while(f>=0 and s>=0){
-            nums1[ind--]=max(nums1[f],nums2[s]);
+        while(first>=0 and second>=0){
+
+            nums1[ind] = max(nums1[first],nums2[second]);    // nums1 has a size of (m+n)
+            ind--;
             
-            if(nums1[f]>=nums2[s])
-                f--;
+            if(nums1[first] >= nums2[second])
+                first--;
             else
-                s--;
+                second--;
         }
     
-        while(f>=0)
-            nums1[ind--]=nums1[f--];
+    // only either one of the below while blocks will be executed
+        while(first >= 0)
+            nums1[ind--] = nums1[first--];
         
-        while(s>=0)
-            nums1[ind--]=nums2[s--];
+        while(second >= 0)
+            nums1[ind--] = nums2[second--];
+    
     }
 };
