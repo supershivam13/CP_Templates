@@ -19,11 +19,11 @@ public:
 };
 
 
-// Problem	    Main Approach
-// Jump Game I	  Greedy
-// Jump Game II	  Greedy
-// Jump Game IIIBFS / DFS
-// Jump Game IV	  BFS
+// Problem	          Main Approach
+// Jump Game I	      Greedy
+// Jump Game II	      Greedy
+// Jump Game III      BFS / DFS
+// Jump Game IV	      BFS
 
 // So,
 // Jump Game I & II → Greedy dominates.
