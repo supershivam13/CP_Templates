@@ -31,12 +31,13 @@ public:
         // vectors to store the indexes of the NSL and NSR
         vector<int> NSL, NSR;
 
-        stack<pair<int, int>> s1, s2;
+        stack<pair<int, int>> s1, s2;  // pair of {element, index}
         int n = a.size();
 
         // Finding the indexes of the NSL
         for (int i = 0; i < n; i++) {
-
+            
+            // Assuming a 0-height building at the index -1
             if (s1.size() == 0)
                 NSL.push_back(-1);
 
@@ -94,7 +95,6 @@ public:
         reverse(NSR.begin(), NSR.end());
 
         // NSR Vector is ready now
-
 
 
         int max_area = 0;
