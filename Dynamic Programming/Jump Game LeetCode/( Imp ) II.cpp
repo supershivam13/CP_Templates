@@ -1,5 +1,4 @@
-// Method 1:
-
+// GREEDY APPROACH
 // Time Complexity - O(N)
 // Space Complexity - O(1)
 
@@ -35,32 +34,12 @@ public:
 };
 
 
-// **************************************************************************
+// Problem	      Main Approach
+// Jump Game I	  Greedy
+// Jump Game II	  Greedy
+// Jump Game III	BFS / DFS
+// Jump Game IV	  BFS
 
-// Method 2: Easy DP {will result in TLE}
-
-// Time Complexity - O(N^2)
-// Space Complexity - O(N)
-
-class Solution {
-public:
-  int jump(vector<int> a) {
-    
-    int n=a.size();
-    int dp[n];
-    for (int i = 0; i < n; i++)
-      dp[i] = INT_MAX;
-
-    dp[0] = 0;
-
-    for (int i = 1; i < n; i++) {
-      for (int j = 0; j < i; j++) {
-
-        if (dp[j] != INT_MAX and a[j] + j >= i)
-          dp[i] = min(dp[i], dp[j] + 1);
-      }
-    }
-
-    return (dp[n - 1] == INT_MAX) ? -1 : dp[n - 1];
-  }
-};
+// So,
+// Jump Game I & II → Greedy dominates.
+// III & IV → Graph/BFS based.
