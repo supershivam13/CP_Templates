@@ -1,3 +1,6 @@
+// GREEDY APPROACH
+// TIME COMPLEXITY - O(N)
+
 class Solution {
 public:
   bool canJump(vector<int>& a) {
@@ -14,3 +17,14 @@ public:
     return true;
   }
 };
+
+
+// Problem	      Main Approach
+// Jump Game I	  Greedy
+// Jump Game II	  Greedy
+// Jump Game III	BFS / DFS
+// Jump Game IV	  BFS
+
+// So,
+// Jump Game I & II → Greedy dominates.
+// III & IV → Graph/BFS based.
