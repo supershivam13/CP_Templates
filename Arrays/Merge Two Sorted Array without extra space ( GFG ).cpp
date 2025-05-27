@@ -2,25 +2,24 @@
 // Space Complexity - O(1)
 
 class Solution {
-public:
-    //Function to merge two sorted arrays in O(1) space
-    void merge(long long arr1[], long long arr2[], int n, int m)
-    {
-        // first pointer on last element of first array
-        int i = n - 1;
-        // second pointer on first element of second array
-        int j = 0;
-
-        while (i >= 0 and j < m) {
-
-            if (arr1[i] > arr2[j])
-                swap(arr1[i], arr2[j]);
-
-            i--;
-            j++;
+  public:
+    void mergeArrays(vector<int>& a, vector<int>& b) {
+        
+        int left = a.size()-1;  // left on last element of first array
+        int right = 0;          // right on first element of second array
+        
+        while(left>=0 and right<b.size()){
+            
+            if(a[left] > b[right]){    
+                swap(a[left],b[right]);
+                left--;
+                right++;
+            }
+            else    // left value is going to be smaller further and right value is going to be greater further, so break simply
+                break;
         }
-
-        sort(arr1, arr1 + n);
-        sort(arr2, arr2 + m);
+        
+        sort(a.begin(),a.end());    // small elements in first array, so sort
+        sort(b.begin(),b.end());    // larger elements in second array, so sort
     }
 };
