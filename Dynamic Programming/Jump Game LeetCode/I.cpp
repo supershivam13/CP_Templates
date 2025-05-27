@@ -2,18 +2,15 @@ class Solution {
 public:
   bool canJump(vector<int>& a) {
 
-    int n = a.size();
-    if (n == 1)
-      return true;
+    int maxIndex = 0;       // maximum index upto which we can reach
 
-    int jump = a[0];
-
-    for (int i = 1 ; i < n; i++) {
-      if (jump < i)
+    for (int i = 0 ; i < a.size(); i++) {
+      if (maxIndex < i)         // if we reached index greater than maxIndex, not possible
         return false;
 
-      jump = max(jump , i + a[i]);
+      maxIndex = max(maxIndex , i + a[i]);       // max( maxIndex, index + maxJumpPossible)
     }
+    
     return true;
   }
 };
