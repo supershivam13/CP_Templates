@@ -19,10 +19,10 @@ public:
 };
 
 
-// Problem	      Main Approach
+// Problem	    Main Approach
 // Jump Game I	  Greedy
 // Jump Game II	  Greedy
-// Jump Game III	BFS / DFS
+// Jump Game IIIBFS / DFS
 // Jump Game IV	  BFS
 
 // So,
