@@ -10,21 +10,17 @@ public:
         if (s.length() <= 1)
             return s;
 
-        // each character of a string can be treated as a palindrome of length 1
-        int max_len = 1;
-
+        int max_len = 1;    // each character of a string can be treated as a palindrome of length 1
         int n = s.length();
 
-        // to store the start and end index of the longest palindromic substring
-        int st = 0, end = 0;
+        int st = 0, end = 0;  // to store the start and end index of the longest palindromic substring
 
         // CHECKING FOR THE PLAINDROMES OF ODD LENGTH
         // In case of odd-length palindromes,each character of the string can act as the centre of the palindrome,
         // So looping over all the characters of the string
         for (int i = 0; i < n; i++) {
 
-            // taking ith index as the centre of the palindrome
-            int l = i, r = i;
+            int l = i, r = i;   // taking ith index as the centre of the palindrome
 
             while (l >= 0 && r < n) {
                 if (s[l] == s[r])
@@ -36,11 +32,8 @@ public:
             int len = r - l - 1;
             if (len > max_len) {
                 max_len = len;
-
-                // adding and subtracting 1 to 'l' and 'r' respectively,
-                // because 'r' must have gone one index forward and 'l' one step backward in the while loop
-                st = l + 1;
-                end = r - 1;
+                st = l + 1;     // adding and subtracting 1 to 'l' and 'r' respectively,
+                end = r - 1;    // because 'r' must have gone one index forward and 'l' one step backward in while loop
             }
         }
 
@@ -57,19 +50,16 @@ public:
                 else
                     break;
             }
+            
             int len = r - l - 1;
             if (len > max_len) {
                 max_len = len;
-
-                // adding and subtracting 1 to 'l' and 'r' respectively,
-                // because 'r' must have gone one index forward and 'l' one step backward in the while loop
-                st = l + 1;
-                end = r - 1;
+                st = l + 1;     // adding and subtracting 1 to 'l' and 'r' respectively,
+                end = r - 1;    // because 'r' must have gone one index forward and 'l' one step backward in while loop
             }
         }
 
         // LPSS is at the index 'st' of length 'max_len'
         return s.substr(st, max_len);
-
     }
 };
