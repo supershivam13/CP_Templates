@@ -9,10 +9,7 @@
 // When a target element is not present in the array, then at the end of the loop, 'start' index points to the
 // ceil element of the target and 'end' index points to the floor value of the target.
 
-
-
 // Graph of the Rotated Sorted Array
-
 //                B /.
 //                 / .
 //                /  .
@@ -24,63 +21,39 @@
 //                   .  /
 //                   . /
 //                 C  /
-//
-//
-//
-
-// IDEA TO SOLVE :-
-
-// Find the index of the maximum(pivot) element and then do binary on either of the two parts of the array
-// { i.e either on AB part or on CD part }
-
-
+// IDEA TO SOLVE :-   1) Find the index of the maximum(pivot) element 
+//                    2) Then, do binary on either of the two parts of the array { i.e either on AB part or on CD part }
 class Solution {
 public:
+    int find_pivot(vector<int>& nums, int left, int right){    // Function to return the index of the maximum(pivot) element
 
-    // Function to return the index of the maximum(pivot) element
-    int find_pivot(vector<int>& nums, int left, int right)
-    {
-        // if the array on which function is called is strictly increasing
-        // (it don't has the BC part of the graph )
-        if (nums[left] < nums[right])
-            return right;
+        int n = nums.size();
 
-        int mid;
-
-        // Binary Search
         while (left <= right)
         {
-            mid = left + ((right - left) / 2);
+            int mid = left + ((right - left) / 2);
 
             // both the parts of graph are stricly increasing, so if next element is smaller than the current
             // element, it can occur only at place B
-            if (nums[mid] > nums[mid + 1])
+            if (nums[mid] > nums[(mid + 1)%n])
                 return mid;
 
-            // when mid falls in the CD part of the graph
-            else if (nums[mid] < nums[0])
+            else if (nums[mid] < nums[0])     // when mid falls in the CD part of the graph
                 right = mid - 1;
-
-            // else mid is in the AB part, so changing left = mid + 1
-            else
+            else                              // else mid is in the AB part, so changing left = mid + 1
                 left = mid + 1;
         }
-
-        return mid;
+        return -1;
     }
 
     // Normal Binary Search function to return the index of the target element. If not found, return -1
-    int binary_search(vector<int>& nums, int left, int right, int target)
-    {
-        int mid;
-
+    int binary_search(vector<int>& nums, int left, int right, int target){
         while (left <= right)
         {
-            mid = left + ((right - left) / 2);
+            int mid = left + ((right - left) / 2);
 
             if (nums[mid] == target)
                 return mid;
-
             else if (nums[mid] > target)
                 right = mid - 1;
             else
@@ -90,28 +63,20 @@ public:
         return -1;
     }
 
+    // CODE starts here
+    int search(vector<int>& nums, int target) {
 
-    // Solution starts here
-    int search(vector<int>& a, int target) {
+        int n = nums.size();
 
-        int n = a.size();
+        if(n==1)
+            return nums[0]==target ? 0 : -1;
 
-        if (n == 1) {
-            if (target == a[0])
-                return 0;
-            else
-                return -1;
-        }
-
-        // Finding the index of the maximum element of the array
-        int pivot = find_pivot(a, 0, n - 1);
-
+        int pivot = find_pivot(nums, 0, n - 1); // Finding the index of the Maximum element of array
 
         // if target > a[n-1], then binary search on the AB part, else on CD part
-        if (target > a[n - 1])
-            return binary_search(a, 0, pivot, target);
+        if (target > nums[n - 1])
+            return binary_search(nums, 0, pivot, target);
         else
-            return binary_search(a, (pivot + 1) % n, n - 1, target);
-
+            return binary_search(nums, (pivot + 1) % n, n - 1, target);
     }
 };
