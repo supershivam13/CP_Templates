@@ -1,38 +1,47 @@
 class Solution {
 public:
     string decodeString(string s) {
+        stack<char> st;
+        string str = "";
+        string count = "";
 
-        stack<string> chars;
-        stack<int> nums;
-        string res = "";
-        int num = 0;
+        for(int i = 0; i < s.length(); i++){
 
-        // Only 4 options are there - 1) digit   2)alphabet  3) '['   4) ']'
-        for (char c : s) {
+            if(s[i] == ']'){    // if close bracket, then do decoding till now
 
-            if (isdigit(c))
-                num = num * 10 + (c - '0');
-            else if (isalpha(c))
-                res.push_back(c);
-            else if (c == '[') {
-                chars.push(res);
-                nums.push(num);
-                res = "";
-                num = 0;
+                // Collect the string inside the brackets
+                while(st.top() != '['){
+                    str = st.top() + str;
+                    st.pop();
+                }
+
+                st.pop();       // Pop the '[' character
+
+                while(st.size()>0 && isdigit(st.top())){    // Collect the numbers
+                    count = st.top() + count;
+                    st.pop();
+                }
+
+                int c = stoi(count);        
+                while(c--)
+                    for(char it : str)  // Push the decoded substring back onto the stack
+                        st.push(it);    // char by char, as stack 'st' is of char, not string
+
+                str = "";
+                count = "";
             }
-            else if (c == ']') {
-                string tmp = res;
-                for (int i = 0; i < nums.top() - 1; i++)
-                    res += tmp;
-
-                // chars.top() store the previous required formatted string except this enclosed bracket part,
-                // and 'res' has the required formatted string for this bracket, so adding both
-                res = chars.top() + res;
-                chars.pop();
-                nums.pop();
-            }
+            else
+                st.push(s[i]);
         }
 
-        return res;
+        string ans = "";
+        while(st.size()>0){
+            ans+=st.top();
+            st.pop();
+        }
+        
+        reverse(ans.begin(),ans.end());
+
+        return ans;
     }
 };
