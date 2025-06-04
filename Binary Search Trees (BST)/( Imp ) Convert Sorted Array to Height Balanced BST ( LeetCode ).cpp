@@ -4,25 +4,27 @@
 
 class Solution {
 public:
-    TreeNode *SortedtoBST(vector<int> &a, int start, int end) {
 
-        if (start > end)
+    TreeNode* createBST(vector<int>& nums, int start, int end){
+
+        if(start>end)
             return NULL;
-
-        // Making the middle element as root
-        int mid = start + ((end - start) / 2);
-        TreeNode* root = new TreeNode(a[mid]);
+        
+        int mid = start + (end-start)/2;
+        TreeNode* root = new TreeNode(nums[mid]); // Making the middle element as root
 
         // Recursively calls for the left and right subtree with passing left and right subarray
-        root->left = SortedtoBST(a, start, mid - 1);
-        root->right = SortedtoBST(a, mid + 1, end);
+        root->left = createBST(nums, start, mid - 1);
+        root->right = createBST(nums, mid + 1, end);
 
         return root;
     }
 
-    // Solution starts here
-    TreeNode *sortedArrayToBST(vector<int> &a) {
-        return SortedtoBST(a, 0, a.size() - 1);
+    // CODE starts here
+    TreeNode* sortedArrayToBST(vector<int>& nums) {
+
+         int n = nums.size()-1;
+        return createBST(nums,0,n);
     }
 };
 
