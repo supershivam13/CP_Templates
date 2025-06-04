@@ -14,10 +14,11 @@ class Solution {
                 len++;
                 lps[i] = len;
                 i++;
-            } else {
-                if (len != 0) {
+            }
+            else {
+                if (len != 0)
                     len = lps[len - 1];  // try shorter previous LPS
-                } else {
+                else {
                     lps[i] = 0;
                     i++;
                 }
