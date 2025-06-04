@@ -3,6 +3,9 @@
 
 // Solving this Question without DP ( not based on LCS Pattern )
 
+// Time Complexity - O(N^2)
+// Space Complexity - O(1)
+
 class Solution {
 public:
     string longestPalindrome(string s) {
