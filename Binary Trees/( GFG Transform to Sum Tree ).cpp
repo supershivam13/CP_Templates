@@ -2,32 +2,28 @@ class Solution {
 public:
 
     int changetoSum(Node *root) {
-
-        // Base Conditon
-        if (root == NULL)
+        if (root == NULL)    // Base Conditon
             return 0;
 
         // Case of leaf node {changing it's data to 0 and returning the original data stored in it}
-        if (root->left == NULL and root->right == NULL) {
-            int temp = root->data;
-            root->data = 0;
-            return temp;
+        if (root->left == NULL && root->right == NULL) {
+            int original = node->data;
+            node->data = 0;  // Leaf node becomes 0
+            return original;
         }
 
-        // Recursive calls to get the sum of left subtree and right subtree
-        int LS = changetoSum(root->left);
-        int RS = changetoSum(root->right);
+        int leftSum = SumTree(node->left);
+        int rightSum = SumTree(node->right);
 
-        int temp = root->data;
-        root->data = LS + RS;
+        int original = node->data;
+        node->data = leftSum + rightSum;  // Update node to sum of its left and right subtree
 
-        // returning originally stored root data + {sum of left subtree} + {sum of right subtree}
-        return temp + LS + RS;
+        return original + leftSum + rightSum;  // Return total sum including this node
     }
 
-    // Solution starts here
+    // CODE starts here
     void toSumTree(Node *node)
     {
-        int sum = changetoSum(node);
+        int sum = SumTree(node);
     }
 };
