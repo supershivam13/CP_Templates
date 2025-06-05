@@ -1,50 +1,34 @@
 // Method 1 - Iterative method ( similar to Merge two Sorted arrays )
 
-// Time Complexity - O(N + M)
-// Space Complexity - O( 1 )
+ // TC - O(n+m)
+ // SC - O(1)
 
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* a, ListNode* b) {
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
 
-        if (a == NULL)
-            return b;
-        if (b == NULL)
-            return a;
+        // Dummy node to simplify edge cases
+        ListNode* dummy = new ListNode(-1);
+        ListNode* t = dummy;    // 't' node to traverse further, 'dummy' node to store the head of the merged sorted list
 
-        ListNode* p1 = a;
-        ListNode* p2 = b;
-        ListNode* dummyNode = new ListNode();
-        ListNode* p3 = dummyNode;
-
-        while (p1 != NULL and p2 != NULL) {
-
-            if (p1->val < p2->val) {
-                p3->next = p1;
-                p1 = p1->next;
-            }
+        // Merge while both lists are non-empty
+        while (list1 != NULL && list2 != NULL) {
+            if (list1->val < list2->val) {
+                t->next = list1;
+                list1 = list1->next;
+            } 
             else {
-                p3->next = p2;
-                p2 = p2->next;
+                t->next = list2;
+                list2 = list2->next;
             }
-            p3 = p3->next;
+            t = t->next;
         }
 
-        while (p1 != NULL) {
-            p3->next = p1;
-            p1 = p1->next;
-            p3 = p3->next;
-        }
+        // Attach the remaining part  // Since it's linked list, just attaching one pointer will join the remaining list
+        if (list1 != NULL) t->next = list1; 
+        if (list2 != NULL) t->next = list2;
 
-        while (p2 != NULL) {
-            p3->next = p2;
-            p2 = p2->next;
-            p3 = p3->next;
-        }
-
-        ListNode* newhead = dummyNode->next;
-
-        return newhead;
+        return dummy->next; // Skip dummy node
     }
 };
 
