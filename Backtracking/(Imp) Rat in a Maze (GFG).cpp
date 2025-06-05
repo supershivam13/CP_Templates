@@ -1,79 +1,53 @@
-// OPTIMIZATION in terms of Space
+// OPTIMIZATION in terms of Space (Implemented in this Sokution)
 // Instead of using a separate 'visited' array, we can use the grid to keep track of the visited cells
 // by changing the values to '-1' and putting it back as '1' while backtracking
 // and in the isValid function, we check if (grid[x][y]== -1), then return.
 
 
-
-//In matrix or 2D Grid, x-axis is vertcal and y-axis is horizontal (opposite as of Coordinate Geometry)
-// Up , Right, Down , Left
-int dx[] = { -1, 0, 1, 0};
-int dy[] = {0, 1, 0, -1};
-
 class Solution {
 public:
-    string dir = "URDL";
     vector<vector<int>> grid;
     vector<string> ans;
-    string output="";
-    int vis[6][6];      //maximum value of n is given as 5
-
-     // Funtion to check the valid moves only
-    bool isvalid(int x, int y, int n) {           
-
-        if (x < 0 or y < 0 or x > n - 1 or y > n - 1)            // checking it it is moving out of grid
-            return false;
-
-        if (vis[x][y] == 1 or grid[x][y] == 0)                // if it is already visited or it has obstacle
-            return false;
-
-        return true;
-    }
+    string dir = "URDL"; // Up, Right, Down, Left
+    int dx[4] = {-1, 0, 1, 0};
+    int dy[4] = {0, 1, 0, -1};
 
     void dfs2d(int x, int y, int n, string output) {
+        // ✅ Boundary + Obstacle + Visited check first
+        if (x < 0 || y < 0 || x >= n || y >= n || grid[x][y] == -1 || grid[x][y] == 0)
+            return;
 
-        // Base Condition
-        if (x == n - 1 and y == n - 1) {
+        // ✅ Base case: destination reached
+        if (x == n - 1 && y == n - 1) {
             ans.push_back(output);
             return;
         }
 
-        // If it has obstacle { at the start itself (0,0) }
-        if (grid[x][y] == 0)
-            return;
+        int temp = grid[x][y];
+        grid[x][y] = -1;  // Mark as visited
 
-        vis[x][y] = 1;
-
-        for (int i = 0; i < 4; i++) {
-            if (isvalid(x + dx[i], y + dy[i], n)) {
-
-                output += dir[i];                            // Pre-rocessing for next move
-                vis[x + dx[i]][y + dy[i]] = 1;
-
-                dfs2d(x + dx[i], y + dy[i], n, output);      // next move
-
-                output.pop_back();                           // backtrack
-                vis[x + dx[i]][y + dy[i]] = 0;
-            }
+        for (int d = 0; d < 4; d++) {
+            int new_x = x + dx[d];
+            int new_y = y + dy[d];
+            
+            output.push_back(dir[d]); // Pre-process: add direction
+            dfs2d(new_x, new_y, n, output);
+            output.pop_back();        // Backtrack
         }
 
-        // Back-tracking
-        vis[x][y] = 0;
+        grid[x][y] = temp; // Unmark (backtrack)
     }
-
-    // SOLUTION starts here
-    vector<string> findPath(vector<vector<int>> &mat) {
-        
+    
+    //CODE starts here
+    vector<string> ratInMaze(vector<vector<int>> &mat) {
         int n = mat.size();
         grid = mat;
-        int start = 0, end = 0;
 
-        memset(vis, 0, sizeof(vis));
+        if (grid[0][0] == 0)
+            return ans;
 
-        dfs2d(0, 0, n, output);
-        
-        sort(ans.begin(), ans.end());
-
+        dfs2d(0, 0, n, "");  // Start from (0,0) with empty path
+        sort(ans.begin(), ans.end()); // Lexicographical sort
         return ans;
     }
 };
