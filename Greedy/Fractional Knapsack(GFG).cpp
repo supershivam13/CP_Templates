@@ -1,37 +1,37 @@
-
-/* struct Item{
-    int value;
-    int weight;
-};   */
-
-bool cmp(Item A,Item B)   // sorting the array in descending order of value density
-{
-    double r1=(double)A.value/(double)A.weight;
-    double r2=(double)B.value/(double)B.weight;
-    return r1>r2;
+bool cmp(pair<int, int>& a, pair<int, int>& b) {
+    
+    double r1 = (double)a.first / a.second;
+    double r2 = (double)b.first / b.second;
+    return r1 > r2;                         // Sort in descending order
 }
 
-class Solution
-{
-    public:
-    double fractionalKnapsack(int W, Item arr[], int n)
-    {
-        sort(arr,arr+n,cmp);   //  sorting the array using comparator function
-        double ans=0;
-        for(int i=0;i<n;i++)
-        {
-            if(W>=arr[i].weight)   // when whole item can be taken
-            {
-                W-=arr[i].weight;
-                ans+=arr[i].value;
-            }
-            else                   // when the fraction of object is taken
-            {
-                double fraction=(W*1.0)/arr[i].weight;
-                ans+=arr[i].value*fraction;
+class Solution {
+public:
+    double fractionalKnapsack(vector<int>& val, vector<int>& wt, int capacity) {
+        int n = val.size();
+        vector<pair<int, int>> items;
+
+        for (int i = 0; i < n; i++)
+            items.push_back({val[i], wt[i]});   // Build value-weight pairs
+
+        sort(items.begin(), items.end(), cmp);  // Sort items by value-to-weight ratio
+
+        double totalValue = 0.0;
+
+        for (int i = 0; i < n && capacity > 0; i++) {
+            int v = items[i].first;
+            int w = items[i].second;
+
+            if (capacity >= w) {
+                totalValue += v;
+                capacity -= w;
+            } 
+            else {
+                totalValue += ((double)v / w) * capacity;
                 break;
-            }   
+            }
         }
-        return ans;
+
+        return totalValue;
     }
 };
