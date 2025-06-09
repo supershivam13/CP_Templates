@@ -16,12 +16,11 @@
 
 // **********************************************************************************************
 
-
-class Solution
-{
+class Solution{
 public:
-    vector <int> calculateSpan(int a[], int n)
-    {
+    vector <int> calculateSpan(vector<int>& a)
+    {   
+        int n = a.size();
         vector<int> v;                // vector to return and store the final result
         stack < pair<int, int> > s;   // stack to store pairs { element , index}
 
