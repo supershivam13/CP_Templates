@@ -1,7 +1,7 @@
 class MinStack {
 private:
-    stack<int> s;
-    stack<int> ss;
+    stack<int> s;   // main stack
+    stack<int> ss;  // supporting stack 'ss', always store minimum at top
 
 public:
     MinStack() {}
