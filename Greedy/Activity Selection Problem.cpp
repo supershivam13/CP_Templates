@@ -1,33 +1,32 @@
-bool comparator(pair<int, int> a, pair<int, int> b ) {    // sorting the vector in ascending order of end time(JO PEHLE KHATAM HO RHA H USKO LE LO),
-                                                          // if end time are equal, then in ascending order of the start time
-    if (a.second == b.second)
-        return a.first < b.first;
+bool cmp(vector<int>& a, vector<int>& b){ // sorting the vector in ascending order of end time
+                                          //(JO PEHLE KHATAM HO RHA H USKO LE LO),
+    if(a[1]==b[1])          // if end times are equal, then in ascending order of start time
+        return a[0]<b[0];
     
-    return a.second < b.second;
+    return a[1] < b[1];
 }
 
 class Solution {
-public:
-    int activitySelection(vector<int> start, vector<int> end, int n)
-    {
-        vector<pair<int, int>> v;
-
-        for (int i = 0; i < start.size(); i++)  // storing the values as pair [start,end] in vector v
-            v.push_back({start[i], end[i]});
-
-        sort(v.begin(), v.end(), comparator);   // sorting the vector v using comparator function
-
-        int take = 1;                // we took the first job
-        int last = v[0].second;       
-
-        for (int i = 1; i < v.size(); i++) {
-
-            if (v[i].first > last) {
+  public:
+    int activitySelection(vector<int>& start, vector<int>& end) {
+        
+        int n = start.size();
+        vector<vector<int>> pairs;
+        for(int i=0; i<n; i++)          // storing the values as pair [start,end] in vector 'pairs'
+            pairs.push_back({start[i], end[i]});
+        
+        sort(pairs.begin(), pairs.end(), cmp); // sorting the 'pairs' using comparator function
+        
+        int take = 1;               // we took the first job
+        int last = pairs[0][1];
+        
+        for(int i=1; i<n; i++){
+            if(last < pairs[i][0]){
+                last = pairs[i][1];
                 take++;
-                last = v[i].second;
             }
         }
-
+        
         return take;
     }
 };
