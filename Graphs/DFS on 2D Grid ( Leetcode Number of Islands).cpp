@@ -24,7 +24,7 @@ public:
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (grid[i][j] == '1' && !visited[i][j]) { // check if found land {grid[i][j]==1} and it is unvisited
+                if (grid[i][j] == '1' && visited[i][j]==0) { // check if found land {grid[i][j]==1} and it is unvisited
                     dfs(i, j, n, m, grid, visited);
                     islands++;
                 }
