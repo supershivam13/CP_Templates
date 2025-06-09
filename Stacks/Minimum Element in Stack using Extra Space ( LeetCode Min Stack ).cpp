@@ -1,21 +1,21 @@
 class MinStack {
-
 private:
-    stack<int> s;     // normal stack 's'
-    stack<int> ss;    // supporting stack 'ss', always stores the min value at top
-    
-public:
+    stack<int> s;
+    stack<int> ss;
 
+public:
+    MinStack() {}
+    
     void push(int val) {
         s.push(val);
-        
-        if(ss.size()==0 or ss.top()>=val)
+
+        if(ss.size()==0 || ss.top()>=val)  // check if 'val' is needed to be insert in supporting stack 'ss' also
             ss.push(val);
     }
     
     void pop() {
         
-        if(ss.top()==s.top())
+        if(s.top()==ss.top())   // check if needed to pop from supporting stack 'ss' also
             ss.pop();
         
         s.pop();
@@ -25,7 +25,7 @@ public:
         return s.top();
     }
     
-    int getMin() {      
-        return ss.top();   // supporting stack 'ss' always stores the min value at top
+    int getMin() {
+        return ss.top();  // supporting stack 'ss' always stores the min value at top
     }
 };
