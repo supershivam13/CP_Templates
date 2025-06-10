@@ -1,23 +1,19 @@
 // METHOD 1 - USING RECURSION
 // Time Complexity - O(N)
 
-
 class Solution {
 public:
-
     vector<int> ans;
 
     void Preorder(TreeNode* root) {
 
-        if (root == NULL)
-            return;
+        if (root == NULL)  return;
 
         ans.push_back(root->val);
         Preorder(root->left);
         Preorder(root->right);
     }
-
-    // Solution Starts here
+    // CODE Starts here
     vector<int> preorderTraversal(TreeNode* root) {
 
         Preorder(root);
