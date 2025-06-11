@@ -22,9 +22,9 @@ public:
             int right = left + center % 2;
 
             while (left >= 0 && right < n && s[left] == s[right]) {
-                count++;
+                count++;                        // palindrome found
 
-                if(right-left+1>max_len){
+                if(right-left+1>max_len){       // if current palindrome has bigger length, update 'max_len'
                     max_len = right-left+1;
                     start = left;
                 }
