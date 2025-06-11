@@ -3,66 +3,37 @@
 
 // Solving this Question without DP ( not based on LCS Pattern )
 
-// Time Complexity - O(N^2)
-// Space Complexity - O(1)
 
+// TC - O(N^2)
+// SC - O(1)
 class Solution {
 public:
     string longestPalindrome(string s) {
-
-        if (s.length() <= 1)
-            return s;
-
-        int max_len = 1;    // each character of a string can be treated as a palindrome of length 1
         int n = s.length();
+        int count = 0;      // stores the count of palindromic substrings
+        int max_len = 1;    // each character of a string can be treated as a palindrome of length 1
+        int start = 0;      // index to store the start index of the longetst palindromic substring
 
-        int st = 0, end = 0;  // to store the start and end index of the longest palindromic substring
+        // For a string of length n, there are 2n-1 possible centers:
+        // n single characters (odd-length palindromes)
+        // n-1 pairs between characters (even-length palindromes)
+        for (int center = 0; center < 2 * n - 1; center++) {    // Expand around each possible center
+            int left = center / 2;
+            int right = left + center % 2;
 
-        // CHECKING FOR THE PLAINDROMES OF ODD LENGTH
-        // In case of odd-length palindromes,each character of the string can act as the centre of the palindrome,
-        // So looping over all the characters of the string
-        for (int i = 0; i < n; i++) {
+            while (left >= 0 && right < n && s[left] == s[right]) {
+                count++;
 
-            int l = i, r = i;   // taking ith index as the centre of the palindrome
+                if(right-left+1>max_len){
+                    max_len = right-left+1;
+                    start = left;
+                }
 
-            while (l >= 0 && r < n) {
-                if (s[l] == s[r])
-                    l--, r++;
-                else
-                    break;
-            }
-
-            int len = r - l - 1;
-            if (len > max_len) {
-                max_len = len;
-                st = l + 1;     // adding and subtracting 1 to 'l' and 'r' respectively,
-                end = r - 1;    // because 'r' must have gone one index forward and 'l' one step backward in while loop
-            }
-        }
-
-        // CHECKING FOR THE PLAINDROMES OF EVEN LENGTH
-        // In case of even-length palindromes, the middle space between any two characters of the string can
-        // act as the centre of the palindrome, So looping over all such middle spaces characters of the string
-        for (int i = 0; i < n - 1; ++i) {
-
-            // the middle space between the ith and (i+1)th character acting as the centre of the palindrome
-            int l = i, r = i + 1;
-            while (l >= 0 && r < n) {
-                if (s[l] == s[r])
-                    l--, r++;
-                else
-                    break;
-            }
-            
-            int len = r - l - 1;
-            if (len > max_len) {
-                max_len = len;
-                st = l + 1;     // adding and subtracting 1 to 'l' and 'r' respectively,
-                end = r - 1;    // because 'r' must have gone one index forward and 'l' one step backward in while loop
+                left--;
+                right++;
             }
         }
 
-        // LPSS is at the index 'st' of length 'max_len'
-        return s.substr(st, max_len);
+        return s.substr(start,max_len);
     }
 };
