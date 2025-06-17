@@ -14,14 +14,14 @@ public:
         while (j < n) {
             sum += nums[j];                   // Adding calculations of 'j'
     
-            if (sum == k)                    // Condition is met
+            if (sum == k)                     // Condition is met
                 ans = max(ans, j - i + 1);
     
-            while (sum > k) {       // Shrink window till 'sum' > 'k'
-                sum -= nums[i];     // removing calculations of 'i'
+            while (sum > k) {                 // Shrink window till 'sum' > 'k'
+                sum -= nums[i];               // removing calculations of 'i'
                 i++;
     
-                if (sum == k)
+                if (sum == k)                 // Condition is met
                     ans = max(ans, j - i + 1);
             }
             j++;
