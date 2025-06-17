@@ -7,31 +7,26 @@
 
 class Solution {
 public:
-    int lenOfLongSubarr(int nums[],  int N, int k)
-    {
-        int i = 0, j = 0, ans = 0, localSum = 0;
-
-        while (j < N)
-        {
-            localSum = localSum + nums[j];        // adding alculations of j
-
-            if (localSum == k)                    // if condition is met
-                ans = max(ans, (j - i + 1));
-
-            else
-            {
-                while (localSum > k)
-                {
-                    localSum -= nums[i];           // removing calculations of i
-                    i++;
-                    if (localSum == k)
-                        ans = max(ans, (j - i + 1));
-                }
+    int longestSubarray(vector<int>& nums, int k) {
+        int i = 0, j = 0, n = nums.size();
+        int sum = 0, ans = 0;
+    
+        while (j < n) {
+            sum += nums[j];                   // Adding calculations of 'j'
+    
+            if (sum == k)                    // Condition is met
+                ans = max(ans, j - i + 1);
+    
+            while (sum > k) {       // Shrink window till
+                sum -= nums[i];
+                i++;
+    
+                if (sum == k)
+                    ans = max(ans, j - i + 1);
             }
-
             j++;
         }
-
+    
         return ans;
     }
 };
