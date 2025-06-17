@@ -17,8 +17,8 @@ public:
             if (sum == k)                    // Condition is met
                 ans = max(ans, j - i + 1);
     
-            while (sum > k) {       // Shrink window till
-                sum -= nums[i];
+            while (sum > k) {       // Shrink window till 'sum' > 'k'
+                sum -= nums[i];     // removing calculations of 'i'
                 i++;
     
                 if (sum == k)
