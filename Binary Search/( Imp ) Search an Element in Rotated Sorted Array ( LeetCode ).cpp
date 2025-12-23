@@ -38,10 +38,10 @@ public:
             if (nums[mid] > nums[(mid + 1)%n])
                 return mid;
 
-            else if (nums[mid] < nums[0])     // when mid falls in the CD part of the graph
-                right = mid - 1;
-            else                              // else mid is in the AB part, so changing left = mid + 1
+            else if (nums[mid] >= nums[0])     // when mid falls in the AB part of the graph
                 left = mid + 1;
+            else                              // else mid is in the CD part, so changing right = mid 1 1
+                right = mid - 1;
         }
         return -1;
     }
@@ -73,8 +73,8 @@ public:
 
         int pivot = find_pivot(nums, 0, n - 1); // Finding the index of the Maximum element of array
 
-        // if target > a[n-1], then binary search on the AB part, else on CD part
-        if (target > nums[n - 1])
+        // if target > a[0], then binary search on the AB part, else on CD part
+        if (target >= nums[0])
             return binary_search(nums, 0, pivot, target);
         else
             return binary_search(nums, (pivot + 1) % n, n - 1, target);
