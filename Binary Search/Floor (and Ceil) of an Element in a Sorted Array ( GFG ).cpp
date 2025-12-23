@@ -14,16 +14,14 @@ public:
     int findFloor(vector<long long> v, long long n, long long x) {
 
         int start = 0, end = n - 1;
-        int mid;
 
         // Variable to store the index of the floor element of x
         // initialised with -1, so that if no element <= x, then return -1.
         int res = -1;
 
-        // Binary Search
         while (start <= end) {
 
-            mid = start + ((end - start) / 2);
+            int mid = start + ((end - start) / 2);
 
             if (v[mid] == x)
                 return mid;
