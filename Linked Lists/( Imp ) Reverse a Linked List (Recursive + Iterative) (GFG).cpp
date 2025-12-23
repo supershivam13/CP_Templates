@@ -41,25 +41,20 @@ class Solution
 public:
     struct Node* reverseList(struct Node *head)
     {
-        // { Prev Curr Temp }
+        // PCT { prev curr temp }
         Node* prev = NULL;
         Node* curr = head;
         Node* temp;
 
         while (curr != NULL) {
 
-            // store next
-            temp = curr->next;
+            temp = curr->next;        // stores next node in 'temp' // {TCP}
+            curr->next = prev;        // update curr
 
-            // update current
-            curr->next = prev;
-
-            prev = curr;
-            curr = temp;
+            prev = curr;            // P = C        {PCT}
+            curr = temp;            // C = T 
         }
 
-        head = prev;
-
-        return head;
+        return prev;
     }
 };
