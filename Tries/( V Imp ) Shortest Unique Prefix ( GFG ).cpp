@@ -23,6 +23,12 @@ public:
         for (int i = 0; i < 26; i++)
             children[i] = NULL;
     }
+    
+    ~TrieNode() {
+        for (int i = 0; i < 26; i++)
+            if (children[i] != NULL)
+                delete children[i];
+    }
 };
 
 void insert(TrieNode* root, string s) {
@@ -62,16 +68,21 @@ void getAns(TrieNode* root, string s, vector<string>& result) {
 }
 
 // CODE starts here
-vector<string> Solution::prefix(vector<string> &A) {
+class Solution {
+  public:
+    vector<string> findPrefixes(string A[], int n) {
+        
+        vector<string> result;
+        TrieNode* root = new TrieNode();
     
-    vector<string> result;
-    TrieNode* root = new TrieNode();
-
-    for (int i = 0; i < A.size(); i++)      // Inserting all the words in Trie
-        insert(root, A[i]);
-
-    for (int i = 0; i < A.size(); i++)      // getting Shortest Uniue Prefix for all words
-        getAns(root, A[i], result);
-
-    return result;
-}
+        for (int i = 0; i < n; i++)      // Inserting all the words in Trie
+            insert(root, A[i]);
+    
+        for (int i = 0; i < n; i++)      // getting Shortest Uniue Prefix for all words
+            getAns(root, A[i], result);
+        
+        delete root;
+        
+        return result;
+    }
+};
