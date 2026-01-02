@@ -57,7 +57,7 @@ int main(){
     for(int i = 0; i<n; i++)
     	cin >> a[i];
 
-    build(0, 0, n-1);
+    build(0, 0, n-1);			 // Built using 0-based indexing
 
     int q;						 // Number of queries  (return the minimum element in the range [L,R])
     cin >> q;
