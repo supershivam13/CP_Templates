@@ -1,109 +1,77 @@
 // TRIES
-
 // a) efficient information retrieval data structure
 // b) searchs in optimal time O( word.length() ), but takes extra space for storage
 
-
 // IMPORTANT -
-
 // A Normal Trie is also called a Prefix Trie because it contains all the prefixes of a word as well.
 // A Suffix Trie is a Trie in which we insert all the sufffixes of the word along with the full word { as full word is also a suffix }.
-
 
 // Insertion in Trie - O( word.length() );
 // Searching in Trie - O( word.length() )
 
-
 // **********************************************************************************
 
-
-vector<string> ans;
-
 // Node class { as per the requirements }
-class node {
+class TrieNode {
 public:
-
     int count;
-    node* a[26];
+    TrieNode* children[26];
 
-    // Constructor
-    node() {
+    // Constructor initializes a Node
+    TrieNode() {
         count = 0;
         for (int i = 0; i < 26; i++)
-            a[i] = NULL;
-    }
-
-    // Destructor
-    ~node() {
-        for (int i = 0; i < 26; i++) {
-            if (a[i] != NULL)
-                delete a[i];
-        }
+            children[i] = NULL;
     }
 };
 
+void insert(TrieNode* root, string s) {
 
-// Function to insert word in Trie
-void insert(node* root, string s) {
-
-    node* temproot = root;
+    TrieNode* curr = root;
 
     for (int i = 0; i < s.length(); i++) {
+        int idx = s[i] - 'a';
 
-        int index = s[i] - 'a';
+        if (curr->children[idx] == NULL)                // create new node if already not present
+            curr->children[idx] = new TrieNode();
 
-        // create new node if already not present
-        if (temproot->a[index] == NULL)
-            temproot->a[index] = new node();
-
-        // moving to the next node
-        temproot = temproot->a[index];
-        temproot->count++;
+        curr = curr->children[idx];                     // moving to the next node
+        curr->count++;
     }
 }
 
-void getAns(node* root, string s) {
+void getAns(TrieNode* root, string s, vector<string>& result) {
 
-    node* temproot = root;
+    TrieNode* curr = root;
     string out = "";
 
     for (int i = 0; i < s.length(); i++) {
-
-        int index = s[i] - 'a';
-
-        // moving to the next node
-        temproot = temproot->a[index];
-
+            
         out += s[i];
+        
+        int idx = s[i] - 'a';
+        curr = curr->children[idx];     // moving to the next node
 
         // when the count of a node is 1, it means it is visited only one time, so upto this
-        // it can be a unique prefix
-        if (temproot->count == 1) {
-            ans.push_back(out);
+        // it can be the "Shortest Unique Prefix"
+        if (curr->count == 1) {
+            result.push_back(out);
             return;
         }
     }
-
 }
 
-
-// Solution starts here
+// CODE starts here
 vector<string> Solution::prefix(vector<string> &A) {
+    
+    vector<string> result;
+    TrieNode* root = new TrieNode();
 
-    ans.clear();
-
-    node* root = new node();
-
-    // Inserting all the words in Trie
-    for (int i = 0; i < A.size(); i++)
+    for (int i = 0; i < A.size(); i++)      // Inserting all the words in Trie
         insert(root, A[i]);
 
-    // getting shortest uniue prefix for all words
-    for (int i = 0; i < A.size(); i++)
-        getAns(root, A[i]);
+    for (int i = 0; i < A.size(); i++)      // getting Shortest Uniue Prefix for all words
+        getAns(root, A[i], result);
 
-    // delete the dynamically allocated memory for root node
-    delete root;
-
-    return ans;
+    return result;
 }
