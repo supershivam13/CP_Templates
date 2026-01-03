@@ -1,5 +1,4 @@
 // 1) LEFT VIEW
-
 // Time Complexity - O(N) { instead of two nested while loops, the complexity is O(N) }
 
 class Solution {
@@ -14,12 +13,12 @@ class Solution {
 
         q.push(root);           
 
-        while (!q.empty()) {    // Run till the queue gets empty
+        while (q.size() > 0) {
 
             int size = q.size(); //  Snippet - (1) size will be equal to the nodes in that level of the tree, and declare a temp pointer
             Node* temp;
 
-            ans.push_back(q.front()->data); //  Snippet - (2)storing the first element of each level of tree
+            ans.push_back(q.front()->data); //  Snippet - (2) storing the first element of each level of tree
 
             // processing the nodes level-wise
             while (size--) {                // Snippet -  (3) While loop
@@ -33,10 +32,9 @@ class Solution {
             }
         }
 
-    return ans;
+        return ans;
     }
 };
-
 
 
 // 2) RIGHT VIEW  ( only swap positions of Snippet (2) and (3) in Leftview to get Rightview)
@@ -55,7 +53,7 @@ public:
 
         q.push(root);
 
-        while (!q.empty()) {         // Run till the queue gets empty
+        while (q.size() > 0) {         // Run till the queue gets empty
 
             int size = q.size();   // Snippet - (1) size will be equal to the nodes in that level of the tree, and declare a temp pointer
             Node* temp;
