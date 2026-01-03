@@ -68,19 +68,13 @@ public:
     }
 };
 
-
 // *******************************************************************************
 
 
-
-
 // INFIX TO PREFIX
-
-// Same as Infix to Postfix, only Two steps needed to be done before.
+// Same as Infix to Postfix, only 3 steps needed to be done:
 
 // Steps -
-
 // 1. Reverse the string.
-// 2. Change all open brackets to close and vice versa.
-
-// After this, it is same as Infix to Postfix conversion
+// 2. Change all open brackets to close '(' to ')' && close to open brackets ')' to '('.
+// 3. Perform Postfix Conversion, and reverse the result, you'll get the Prefix Expression.
