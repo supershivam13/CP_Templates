@@ -1,3 +1,8 @@
+// 1) Dijkstra’s is a Greedy algorithm (preferred when non-negative edges)
+// 2) Works on the Adjacency List.
+// 3) Uses BFS with Priority Queue
+// 4) Time Complexity - O((V + E) * logV)
+
 class Solution {
 public:
     vector<int> dijkstra(int V, vector<vector<int>> &edges, int src) {
