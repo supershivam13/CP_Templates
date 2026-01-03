@@ -1,4 +1,4 @@
-// Time Complexity - O(N)
+// Time Complexity - O(N) - Uses BFS Algorithm
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
@@ -9,7 +9,7 @@ public:
             return ans;
 
         queue<TreeNode*> q;
-        q.push(root);
+        q.push(root);                   
 
         while (!q.empty()) {
             int size = q.size();              // number of nodes at the current level
