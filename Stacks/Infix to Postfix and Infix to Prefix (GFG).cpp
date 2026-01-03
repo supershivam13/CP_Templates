@@ -16,64 +16,50 @@
 // 7. Now, after the For loop, Pop and output from the stack until it is not empty.
 // 8. Print the output.
 
-
 class Solution {
 public:
-
-    //Function to return precedence of operators
-    int prec(char c) {
-        if (c == '^')
-            return 3;
-        else if (c == '/' || c == '*')
-            return 2;
-        else if (c == '+' || c == '-')
-            return 1;
-        else
-            return -1;
-    }
-
-    // Solution starts here
-    string infixToPostfix(string s)
-    {
+    string infixToPostfix(string s) {
         int n = s.length();
         string result;
         stack<char> st;
 
+        unordered_map<char, int> precedence = { {'^', 3}, {'*', 2}, {'/', 2}, {'+', 1}, {'-', 1} };
 
         for (int i = 0; i < n; i++) {
             char c = s[i];
 
-            // if 'c' is alphabet or number, append to the result string
+            // Operand
             if (isalnum(c))
                 result += c;
+            // Opening bracket
             else if (c == '(')
                 st.push(c);
-
-            // if 'c' is closing bracket, then append all the elements present in stack to the result string
-            // till we don't find a open bracket
+            // Closing bracket
             else if (c == ')') {
-
-                while (st.top() != '(') {
+                // append all the elements present in stack to the result string
+                // till we don't find a open bracket
+                while (!st.empty() && st.top() != '(') {
                     result += st.top();
                     st.pop();
                 }
-                // pop the '(' opening bracket from the stack
-                st.pop();
+                st.pop();   // remove '('
             }
-            // if 'c' is an operator
+            // Operator
             else {
-                // append all the element present in stack to the result until precedence of stack.top()
-                // become less than that of incoming operator 'c'
-                // This loop won't run if the prec(c) is already greater than prec(s.top())
-                while (st.size() > 0 and prec(c) <= prec(st.top())) {
+                // Pop operators from stack while they have higher precedence,
+                // or same precedence with left associativity (except '^' which is right-associative)
+                while (!st.empty() && st.top() != '(' &&
+                       (precedence[c] < precedence[st.top()] ||
+                        (precedence[c] == precedence[st.top()] && c != '^'))) {
                     result += st.top();
                     st.pop();
                 }
-                st.push(c);  // push the operator 'c' into the stack
+                st.push(c);
             }
         }
 
-        while (st.size()) {
+        // Pop remaining operators
+        while (!st.empty()) {
             result += st.top();
             st.pop();
         }
@@ -81,7 +67,6 @@ public:
         return result;
     }
 };
-
 
 
 // *******************************************************************************
