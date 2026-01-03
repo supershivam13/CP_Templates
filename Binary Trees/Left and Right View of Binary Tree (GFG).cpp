@@ -58,7 +58,6 @@ public:
             int size = q.size();   // Snippet - (1) size will be equal to the nodes in that level of the tree, and declare a temp pointer
             Node* temp;
             
-
             // processing the nodes level-wise
             while (size--) {            // Snippet - (2) while loop
                 temp = q.front();
