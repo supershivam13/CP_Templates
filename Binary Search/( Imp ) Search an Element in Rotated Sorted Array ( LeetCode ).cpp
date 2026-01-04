@@ -28,14 +28,14 @@ public:
     int find_pivot(vector<int>& nums, int left, int right){    // Function to return the index of the maximum(pivot) element
 
         int n = nums.size();
-
-        while (left <= right)
-        {
+        
+        while (left <= right){
+            
             int mid = left + ((right - left) / 2);
 
             // both the parts of graph are stricly increasing, so if next element is smaller than the current
             // element, it can occur only at place B
-            if (nums[mid] > nums[(mid + 1)%n])
+            if (nums[mid] > nums[(mid + 1) % n])
                 return mid;
 
             else if (nums[mid] >= nums[0])     // when mid falls in the AB part of the graph
