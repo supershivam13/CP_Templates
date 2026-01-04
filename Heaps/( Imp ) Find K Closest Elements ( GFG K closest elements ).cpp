@@ -12,14 +12,14 @@
 // ( A for loop of N complexity and we never stores more than k elements in heap at any moment
 // so, pushing an elements take logK time, so overall TC - O( NlogK ) )
 
-
 class Solution {
 public:
-    vector<int> printKClosest(vector<int> a, int n, int k, int x) {
-
+    vector<int> printKClosest(vector<int> a, int k, int x) {
+        
+        int n = a.size();
         vector<int> ans;
-
-        // making a max heap of pair { absolute difference, element }
+        
+        // making a Max heap of pair { absolute difference, element }
         priority_queue<pair<int, int>> mx;
 
         for (int i = 0; i < n; i++) {
@@ -31,7 +31,7 @@ public:
             // sorting will be done on the basis of first element of pair
             // in case first elements of pair are equal, then sorting done on basis of second
 
-            // acc. to question, we need larger element before in case of same absolute difference
+            // acc. to Question, we need larger element before in case of same absolute difference
             // so, storing the second as negative, so to reverse the comparator function of sorting
             mx.push({abs(x - a[i]), -a[i]});
 
@@ -39,8 +39,7 @@ public:
                 mx.pop();
         }
 
-        // inserting the elements of the heap to the ans vector
-        while (mx.size() > 0) {
+        while (mx.size() > 0) {     // inserting the elements of the heap to the ans vector
             ans.push_back(-1 * (mx.top().second));
             mx.pop();
         }
