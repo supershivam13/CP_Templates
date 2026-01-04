@@ -37,7 +37,6 @@ public:
             // element, it can occur only at place B
             if (nums[mid] > nums[(mid + 1) % n])
                 return mid;
-
             else if (nums[mid] >= nums[0])     // when mid falls in the AB part of the graph
                 left = mid + 1;
             else                              // else mid is in the CD part, so changing right = mid 1 1
