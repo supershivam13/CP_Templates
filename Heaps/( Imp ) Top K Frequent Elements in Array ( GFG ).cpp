@@ -12,38 +12,33 @@
 // ( A for loop of N complexity and we never stores more than k elements in heap at any moment
 // so, pushing an elements take logK time, so overall TC - O( NlogK ) )
 
-
 class Solution {
 public:
-    vector<int> topK(vector<int>& a, int k) {
-
-        // MIN HEAP of pair { frequency, element}
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>> > minh;
-
-        vector<int> ans;  // vector of integers to store the results
-
-        unordered_map<int, int> mp;   // map to store the frequency of each element {element : frequency}
-        int n = a.size();
-
-        for (int i = 0; i < n; i++)
-            mp[a[i]]++;
-
+    vector<int> topKFreq(vector<int>& nums, int k) {
+        
+        unordered_map<int, int> mp;   // {element : frequency}
+        for(auto ele : nums)
+            mp[ele]++;
+        
+        // MIN HEAP of pair {frequency, element}
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>> > pq;
+        
         // Traversing the map and sorting the elements in heap on the basis of frequency of elements
-        for (auto i : mp) {
-            minh.push({i.second, i.first});
+        for (auto p : mp) {
+            pq.push({p.second, p.first});
 
             // sorting will be done on the basis of first element of pair
             // in case first elements of pair are equal, then sorting done on basis of second
             // so the pair with smaller second element will be popped ( as per requirement of ques )
 
-            if (minh.size() > k)
-                minh.pop();
+            if (pq.size() > k)
+                pq.pop();
         }
 
-        // inserting the elements of the heap to the ans vector
-        while (minh.size() > 0) {
-            ans.push_back(minh.top().second);
-            minh.pop();
+        vector<int> ans;
+        while (pq.size() > 0) {     // inserting the elements of the heap to the 'ans' vector
+            ans.push_back(pq.top().second);
+            pq.pop();
         }
 
         reverse(ans.begin(), ans.end());
