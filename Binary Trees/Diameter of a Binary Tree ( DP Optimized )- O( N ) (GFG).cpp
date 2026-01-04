@@ -9,17 +9,15 @@ public:
         pair<int,int> p, left, right;      // pair of {diameter, height}
 
         if (root == NULL) {    // Base Condition
-            p.first = 0;
-            p.second = 0;
+            p.first = 0,  p.second = 0;
             return p;
         }
 
         left = OptimisedDiameter(root->left);
         right = OptimisedDiameter(root->right);
 
-        // Now calculating the heigth(p.second) and diamter(d.first) of the parent node
+        // Calculating the height(p.second) and diamter(d.first) of the parent node
         // using the results of recursive calls on childs.
-
         p.second = max(left.second, right.second) + 1;
 
         int d1 = left.second + right.second; // If asked as Diameter = Number of nodes, then add 1 to 'd1'.
