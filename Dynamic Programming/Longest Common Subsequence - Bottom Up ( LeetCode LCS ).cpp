@@ -3,7 +3,7 @@ public:
     int longestCommonSubsequence(string a, string b) {
 
         int n = a.length(), m = b.length();
-        vector<vector<int>> dp(n + 1, vector<int>(m + 1,0));    // dp[n+1][m+1]
+        vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));    // dp[n + 1][m + 1]
 
         for(int i = 0; i <= n; i++)       // DP Array Initialisatoin (not required, as initialised with 0)
             for(int j = 0; j <= m; j++)
