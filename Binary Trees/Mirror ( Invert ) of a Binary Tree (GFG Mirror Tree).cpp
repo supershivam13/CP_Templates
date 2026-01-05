@@ -5,7 +5,7 @@ class Solution {
   public:
     void mirror(Node* node) {
         
-        if(node==NULL)
+        if(node == NULL)
             return;
 
          swap(node->left,node->right);   // swap the right and left
