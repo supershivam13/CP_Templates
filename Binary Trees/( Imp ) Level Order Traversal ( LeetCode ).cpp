@@ -11,7 +11,7 @@ public:
         queue<TreeNode*> q;
         q.push(root);                   
 
-        while (!q.empty()) {
+        while (q.size() > 0) {
             int size = q.size();              // number of nodes at the current level
 
             while (size--) {
