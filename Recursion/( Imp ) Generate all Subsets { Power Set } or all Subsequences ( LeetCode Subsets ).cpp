@@ -13,11 +13,10 @@
 class Solution {
 public:
     vector<vector<int>> ans;
-
-    // Recursive function to generate all subsets of a vector { PowerSet }
+    // Recursive function to generate all Subsets of a vector {PowerSet}
     void subsets(vector<int> a, vector<int>out) {
 
-        // Base condition, when input length is zero, then we get a subset ( leaf node of the recursive tree )
+        // Base condition, when input length is zero, then we get a subset (leaf node of the recursive tree)
         if (a.size() == 0) {
             ans.push_back(out);
             return;
@@ -38,11 +37,11 @@ public:
         subsets(a, out2);
     }
 
-    // Solution starts here
+    // CODE starts here
     vector<vector<int>> subsets(vector<int>& a) {
 
         vector<int> out;  // initialised output vector
-        subsets(a, out);  // recursive function to generate all subsets of a vector { PowerSet }
+        subsets(a, out);  // recursive function to generate all subsets of a vector {PowerSet}
 
         return ans;
     }
