@@ -1,33 +1,20 @@
-#define f(i,n)          for(int i=0;i<n;i++)
-#define F(i,a,n)        for(int i=a;i<n;i++)
-#define fo(i,a,b)       for(int i=a;i<=b;i++)
-
-int dp[1001][1001];
-
 class Solution {
 public:
-    int longestCommonSubsequence(string x, string y) {
+    int longestCommonSubsequence(string a, string b) {
 
-        int n = x.length();
-        int m = y.length();
+        int n = a.length(), m = b.length();
+        vector<vector<int>> dp(n + 1, vector<int>(m + 1,0));    // dp[n+1][m+1]
 
-        vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
+        for(int i = 0; i <= n; i++)       // DP Array Initialisatoin (not required, as initialised with 0)
+            for(int j = 0; j <= m; j++)
+                dp[i][j] = 0;
 
-        // Initialisation ( Base condition )
-        for(int i = 0; i <= n; i++) {
-            for(int j = 0; j <= m; j++) {
-                if (i == 0 or j == 0)
-                    dp[i][j] = 0;
-            }
-        }
-
-        for(int i = 0; i <= n; i++) {
-            for(int j = 0; j <= m; j++) {
-                
-                if (x[i - 1] == y[j - 1])                // if character of both strings matches
+        for(int i = 1; i <= n; i++){      
+            for(int j = 1; j <= m; j++){
+                if(a[i - 1] == b[j - 1])                  // if character of both strings matches
                     dp[i][j] = 1 + dp[i - 1][j - 1];
-                else
-                    dp[i][j] = max(dp[i][j - 1], dp[i - 1][j]);
+                else 
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
             }
         }
 
