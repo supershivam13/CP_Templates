@@ -1,47 +1,38 @@
 // REVERSE A STACK USING RECURSION
 
-// ************************************************************************************************
-
 #include<bits/stdc++.h>
 using namespace std;
 
 stack<int> st;
 
-// recursive function that inserts an element at the bottom of a stack.
-void insert_at_bottom(int x)
-{
-    // Base Condition
-    if (st.size() == 0) {
+// Recursive function that inserts an element at the bottom of Stack.
+void insert_at_bottom(int x){
+    
+    if (st.size() == 0) {         // Base Condition
         st.push(x);
         return;
     }
 
-    // storing the top element of the stack
-    int a = st.top();
+    int temp = st.top();             // storing the top element of the stack
     st.pop();
 
     insert_at_bottom(x);
 
-    // pushing the element 'a' after 'x' has been pushed in the stack
-    st.push(a);
+    st.push(temp);                   // pushing the element 'a' after 'x' has been pushed in the stack
 }
 
-// Recursive function to reverse Stack
+// Recursive Function to reverse Stack
 void reverseStack() {
 
-    // Base Condtion ( when stack has only one element, nothing to be done )
-    if (st.size() == 1)
+    if (st.size() == 1)        // Base Condtion (when Stack has only one element)
         return;
 
-    // storing the top element of the stack
-    int temp = st.top();
+    int temp = st.top();       // storing the top element of the stack
     st.pop();
 
-    // calling recursively on smaller stack
-    reverseStack();
+    reverseStack();            // calling recursively on smaller stack
 
-    // recursive function that inserts an element at the bottom of a stack.
-    insert_at_bottom(temp);
+    insert_at_bottom(temp);    // Recursive function that inserts an element at the bottom of a stack.
 }
 
 
