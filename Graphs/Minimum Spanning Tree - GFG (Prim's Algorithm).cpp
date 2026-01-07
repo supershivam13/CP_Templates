@@ -65,12 +65,11 @@ public:
         vector<int> visited(V, 0);
         
          // Step 3: Min-heap priority queue {distance, node}
-        priority_queue< tuple<int,int,int>, vector<ptuple<int,int,int>>, greater<tuple<int,int,int>> > pq;
+        priority_queue< tuple<int,int,int>, vector<tuple<int,int,int>>, greater<tuple<int,int,int>> > pq;
 
         // // Step 4: Initialize with node 0 and parent -1 (any node works if graph is connected)
         pq.push({0, 0, -1});
         int mstWeight = 0;
-
         vector<pair<int,int>> mstEdges;
         
         // Step 5: Prim's Algorithm
@@ -92,7 +91,7 @@ public:
                 int nextWt   = edge.second;
 
                 if (visited[nextNode] == 0) 
-                    pq.push({nextWt, nextNode});
+                    pq.push({nextWt, nextNode, node});
             }
         }
 
