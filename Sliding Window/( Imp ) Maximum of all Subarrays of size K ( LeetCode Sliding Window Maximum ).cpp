@@ -128,16 +128,14 @@ int32_t main()
     f(i, n)
     cin >> a[i];
 
-    // vector to store the final result
-    vector<int> ans;
-    // deque to store the list of potentials which can be maximum
-    deque <int> d;
+    vector<int> ans;        // Vector to store the final result
+    deque <int> d;          // Deque to store the list of potentials which can be maximum
 
-    // Pre-processing for the first window of size k
+    // Pre-processing for the first window of size K
     // only storing the potential numbers which can be maximum at some point of time
     for (int i = 0; i < k; i++) {
 
-        // removing all the numbers smaller than a[i] as they can never be maximum
+        // removing all the numbers smaller than 'a[i]' as they can never be maximum
         while (d.size() > 0 and d.back() < a[i])
             d.pop_back();
 
@@ -147,11 +145,11 @@ int32_t main()
     // SLIDING WINDOW TECHNIQUE
     for (int i = 0; i <= n - k; i++) {
 
-        // case of first window of size k
+        // case of first window of size K
         if (i == 0)
             ans.push_back(d.front());
 
-        // for subsequent windows of size k ( except the first window )
+        // for subsequent windows of size K (except the first window)
         else {
 
             // Remember i is already incremented by the for loop
@@ -166,7 +164,7 @@ int32_t main()
 
             d.push_back(a[i + k - 1]);
 
-            // NOW PRE-PROCESSING IS DONE, CALCULATING THE ANS FROM THE WINDOW
+            // NOW PRE-PROCESSING is done, calculating the ans from the window
             ans.push_back(d.front());
         }
     }
