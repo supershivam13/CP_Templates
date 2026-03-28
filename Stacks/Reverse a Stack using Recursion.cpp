@@ -4,12 +4,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-stack<int> st;
-
 // Recursive function that inserts an element at the bottom of Stack.
-void insert_at_bottom(int x){
-    
-    if (st.size() == 0) {         // Base Condition
+void insert_at_bottom(stack<int>& st, int x){
+    if (st.size() == 0) {            // Base Condition
         st.push(x);
         return;
     }
@@ -17,45 +14,36 @@ void insert_at_bottom(int x){
     int temp = st.top();             // storing the top element of the stack
     st.pop();
 
-    insert_at_bottom(x);
+    insert_at_bottom(st, x);
 
     st.push(temp);                   // pushing the element 'a' after 'x' has been pushed in the stack
 }
 
-// Recursive Function to reverse Stack
-void reverseStack() {
-
+// CODE starts here (Recursive Function to reverse Stack)
+void reverseStack(stack<int>& st) {
     if (st.size() == 1)        // Base Condtion (when Stack has only one element)
         return;
 
     int temp = st.top();       // storing the top element of the stack
     st.pop();
 
-    reverseStack();            // calling recursively on smaller stack
-
-    insert_at_bottom(temp);    // Recursive function that inserts an element at the bottom of a stack.
+    reverseStack(st);            // calling recursively on smaller stack
+    insert_at_bottom(st, temp);    // Recursive function that inserts an element at the bottom of a stack.
 }
 
-
-int main()
-{
-    // push elements into the stack
+int main(){
+    stack<int> st;
+    
     st.push(1);
     st.push(2);
     st.push(3);
     st.push(4);
-    st.push(5);
-    st.push(6);
+    
+    reverseStack(st);                  // Function to reverse the stack
 
-    // function to reverse the stack
-    reverseStack();
-
-    // Printing the reversed stack
-    while (!st.empty())
-    {
+    while (st.size() > 0){           // Printing the reversed stack
         int temp = st.top();
-        cout << temp << " ";
         st.pop();
+        cout << temp << " ";
     }
-
 }
