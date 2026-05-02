@@ -149,20 +149,15 @@ int32_t main()
     string s, pat;
     cin >> s >> pat;
 
-    // map of all character occurences of the pat string, i.e char and its count.
-    unordered_map<char, int> m;
-    for (auto it : pat) m[it]++;
+    unordered_map<char, int> m;        // map of all character occurences of the pat string {char : frequency}
+    for (auto it : pat) 
+        m[it]++;
 
-    // variable 'count' denotes the distinct characters left in a sliding window.
-    int count = m.size();
+    int count = m.size();            // variable 'count' denotes the distinct characters left in a sliding window
+    int k = pat.length();             // k = window size
+    int n = s.length(), ans = 0;
 
-    // k = window size
-    int k = pat.length();
-    int n = s.length();
-    int ans = 0;
-
-
-    // Pre-processing of first window of size K
+    // Pre-Processing of first window of size K
     for (int i = 0; i < k; i++) {
 
         if (m.find(s[i]) != m.end()) {
@@ -181,31 +176,30 @@ int32_t main()
         // case of first window of size K
         if (i == 0) {
 
-            // If the count is 0, it means all the characters needed for its anagram is here in it,
-            // therefore increase your answer
+            // If the count is 0, it means all the characters needed for its anagram is here in it, therefore increase your answer
             if (count == 0)
                 ans++;
         }
 
-        // for subsequent windows of size k ( except the first window )
+        // for Subsequent windows of size K (except the first window)
         else {
 
             // Remember i is already incremented by the for loop
 
-            // processing the newly added element in the window
+            // Processing the newly added element in the window
             if (m.find(s[i + k - 1]) != m.end()) {
                 m[s[i + k - 1]]--;
 
-                // if changes from 1->0, then it indicates that character is present in required quantity
+                // if changes from 1 -> 0, then it indicates that character is present in required quantity
                 if (m[s[i + k - 1]] == 0)
                     count--;
             }
 
-            // processing the recently removed element from the window
+            // Processing the recently removed element from the window
             if (m.find(s[i - 1]) != m.end()) {
                 m[s[i - 1]]++;
 
-                // if changes from 0->1
+                // if changes from 0 -> 1
                 if (m[s[i - 1]] == 1)
                     count++;
             }
@@ -217,5 +211,4 @@ int32_t main()
     }
 
     cout << ans << endl;
-
 }
